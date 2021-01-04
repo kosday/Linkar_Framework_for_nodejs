@@ -1,0 +1,21 @@
+{
+  "name": "linkar_framework",
+  "version": "1.0.0",
+  "description": "All libraries for work with Linkar",
+  "main": "linkar_framework.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kosday Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "ffi": "git+https://github.com/node-ffi/node-ffi.git",
+    "npm-git-install": "^0.3.0",
+    "ref-array": "^1.2.0"
+  },
+  "win32": {
+    "dependencies": {
+      "windows-build-tools": "^5.0.0"
+    }
+  }
+}

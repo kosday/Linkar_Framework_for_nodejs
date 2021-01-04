@@ -1,0 +1,11 @@
+const DATAFORMATCRU_TYPE = {
+    MV: 0x01,
+	XML: 0x02,
+	JSON: 0x03,
+	XML_DICT: 0x05,
+	XML_SCH: 0x06,
+	JSON_DICT: 0x07,
+	JSON_SCH: 0x08,
+  }
+
+  module.exports = { DATAFORMATCRU_TYPE }
