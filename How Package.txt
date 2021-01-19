@@ -1,3 +1,0 @@
-npm pack
-in the other project
-npm install "C:\VSCODE\project\linkar_framework-1.0.0.tgz"

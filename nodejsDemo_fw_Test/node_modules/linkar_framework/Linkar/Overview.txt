@@ -1,0 +1,13 @@
+Title: Linkar Library Documenttion
+
+Require:
+
+	- ffi
+	- ref
+
+This library use the private Linkar C library that contains the Primitives that allow any operation against the Linkar Server.
+
+This are the two Primitives methods:
+
+	- <Linkar.LkExecuteDirectOperation>
+	- <Linkar.LkExecutePersistentOperation>

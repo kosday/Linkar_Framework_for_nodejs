@@ -1,8 +1,15 @@
+////////////////
+// Library Links
+////////////////
 var Linkar = require('linkar_framework/Linkar/Linkar')
 var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
 var LinkarFunctionsPersistentMV = require("linkar_framework/Linkar.Functions.Persistent.MV/LinkarClient")
 var LinkarStrings = require("linkar_framework/Linkar.Strings/StringFunctions")
 
+////////////////
+// Auxiliary functions
+////////////////
+// Extract data from string result and print
 function process_result(transaction, lkString) {
   // Check Errors in transaction
   var lstError = LinkarStrings.StringFunctions.ExtractErrors(lkString)
@@ -54,32 +61,40 @@ try {
   ////////////////
   console.log("LkLogin")
   console.log("--------")
+  
+  // Create credentials
   var crdOpt = new Linkar.CredentialOptions(
-    "192.168.100.100",		// Linkar Server IP or Hostname
-    "QMWINQ",			        // EntryPoint Name
+    "127.0.0.1",				// Linkar Server IP or Hostname
+    "EP_NAME",			        // EntryPoint Name
     11300,				        // Linkar Server EntryPoint port
-    "admin",				      // Linkar Server Username
-    "1234",			          // Linkar Server Username Password
-    "",					          // Language
-    "Test Node.js")		    // Free text
+    "admin",				    // Linkar Server Username
+    "admin",			        // Linkar Server Username Password
+    "",					        // Language
+    "Test Node.js")		    	// Free text
 
   console.log("PORT: " + crdOpt.Port)
-
+  // Create Linkar Client
   var clt = new LinkarFunctionsPersistentMV.LinkarClient();
-  var sessionId = clt.Login(crdOpt, "", 600);
-  console.log("SessionId:" + sessionId)
+  // Execute Login operation
+  clt.Login(crdOpt, "", 600);
 
   ////////////////
   // LkNew
   ////////////////
   console.log("-- LkNew --")
   console.log("--------")
+  
+  // In this demo we are going to work with the LK.CUSTOMERS file
   var filename = 'LK.CUSTOMERS'
+  // Generate New operation buffer
   var strNewId = 'A90'
   var strNewRecord = 'CUSTOMER 99' + LinkarFunctions.DBMV_Mark.AM_str + 'ADDRESS 99' + LinkarFunctions.DBMV_Mark.AM_str + '999 - 999 - 99'
   var newBuffer = LinkarStrings.StringFunctions.ComposeNewBuffer(strNewId, strNewRecord)
+  // Create New operation options
   var newOptions = new LinkarFunctions.NewOptions(new LinkarFunctions.RecordIdType(), true, false, false, false, false);
+  // Execute New operation
   var result = clt.New(filename, newBuffer, newOptions, "", 60)
+  // Extract data from string result and print
   var output = process_result('New', result)
   var lstRecordIds = output['lstRecordIds']
   var lstRecord = output['lstRecord']
@@ -93,6 +108,8 @@ try {
   /////////////////
   console.log("-- LkExtract --")
   console.log("--------")
+  
+  // Extract and print one element from multivalue string
   result = LinkarFunctions.MvOperations.LkExtract(strRecord, 1)
   console.log(result)
 
@@ -101,6 +118,8 @@ try {
   /////////////////
   console.log("-- LkReplace --")
   console.log("--------")
+  
+  // Replace one element from multivalue string and print
   var replaceVal = "UPDATED CUSTOMER"
   result = LinkarFunctions.MvOperations.LkReplace(strRecord, replaceVal, 1)
   console.log(result)
@@ -110,6 +129,8 @@ try {
   /////////////////
   console.log("-- LkChange --")
   console.log("--------")
+  
+  // Replaces the occurrences of a substring inside a string, by other substring and print
   result = LinkarFunctions.MvOperations.LkChange(strRecord, "9", "8")
   console.log(result)
 
@@ -118,6 +139,8 @@ try {
   /////////////////
   console.log("-- LkCount --")
   console.log("--------")
+  
+  // Counts the occurrences of a substring inside a string and print
   result = LinkarFunctions.MvOperations.LkCount(strRecord, LinkarFunctions.DBMV_Mark.AM)
   console.log(result)
 
@@ -126,6 +149,8 @@ try {
   /////////////////
   console.log("-- LkDCount --")
   console.log("--------")
+  
+  // Counts the delimited substrings inside a string and print
   result = LinkarFunctions.MvOperations.LkDCount(strRecord, LinkarFunctions.DBMV_Mark.AM)
   console.log(result)
 
@@ -134,11 +159,14 @@ try {
   /////////////////
   console.log("-- LkUpdate --")
   console.log("--------")
-
+  
+  // Create Update operation options
   var updateOptions = new LinkarFunctions.UpdateOptions(false, true, false, false, false, false);
+  // Generate Update operation buffer
   var updateBuffer = LinkarStrings.StringFunctions.ComposeUpdateBuffer(strNewId, strNewRecord)
+  // Execute Update operation
   result = clt.Update(filename, updateBuffer, updateOptions, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Update', result)
   lstRecordIds = output['lstRecordIds']
   lstRecord = output['lstRecord']
@@ -157,9 +185,11 @@ try {
   console.log("--------")
 
   var dictionaries = ""
+  // Create Read operation options
   var readOptions = new LinkarFunctions.ReadOptions(true, false, false, false);
+  // Execute Read operation
   result = clt.Read(filename, strNewId, dictionaries, readOptions, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Read', result)
   lstRecordIds = output['lstRecordIds']
   lstRecord = output['lstRecord']
@@ -175,11 +205,14 @@ try {
   /////////////////
   console.log("-- LkDelete --")
   console.log("--------")
-
+  
+  // Generate Delete operation buffer
   var deleteBuffer = LinkarStrings.StringFunctions.ComposeDeleteBuffer(strNewId)
+  // Create Delete operation options
   var deleteOptions = new LinkarFunctions.DeleteOptions(false, new LinkarFunctions.RecoverIdType());
+  // Execute Delete operation
   result = clt.Delete(filename, deleteBuffer, deleteOptions, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Delete', result)
 
 
@@ -187,12 +220,14 @@ try {
   // LkSubroutine
   /////////////////
   console.log("-- LkSubRoutine --")
-  console.log("--------")
-
+  console.log("--------")  
+  
   var subroutineName = 'SUB.DEMOLINKAR'
+  // Generate Subroutine operation buffer
   var args = LinkarStrings.StringFunctions.ComposeSubroutineArgs(["0", "qwerty", ""]);
+  // Execute Subroutine operation
   result = clt.Subroutine(subroutineName, 3, args, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Subroutine', result)
   if (output['lstError'].length == 0) {
     lstOutArgs = output['lstOutArgs']
@@ -208,12 +243,13 @@ try {
 
   console.log("-- LkConversion --")
   console.log("--------")
+  
   var code = "D2-"
   var expression = "13320"
   var conversionType = 'O'.charCodeAt(0)
-
+  // Execute Conversion operation
   result = clt.Conversion(expression, code, conversionType, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Conversion', result)
   if (output['lstError'].length == 0) {
     lstConversion = output['lstConversion'];
@@ -228,11 +264,12 @@ try {
   /////////////////
   console.log("-- LkFormat --")
   console.log("--------")
+  
   var formatSpec = "R%10"
   var expression = "HELLO"
-
+  // Execute Format operation
   result = clt.Format(expression, formatSpec, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Format', result)
   if (output['lstError'].length == 0) {
     lstFormat = output['lstFormat'];
@@ -248,10 +285,11 @@ try {
   /////////////////
   console.log("-- LkExecute --")
   console.log("--------")
+  
   var statement = "WHO"
-
+  // Run Execute operation
   result = clt.Execute(statement, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Execute', result)
   if (output['lstError'].length == 0) {
     lstReturning = output['lstReturning'];
@@ -269,8 +307,9 @@ try {
   console.log("-- LkDictionaries --")
   console.log("--------")
 
+  // Execute Dictionaries operation
   result = clt.Dictionaries(filename, "", 60)
-
+  // Extract data from string result and print
   output = process_result('Dictionaries', result)
   if (output['lstError'].length == 0) {
     console.log("Dictionaries is OK!")
@@ -294,15 +333,16 @@ try {
   /////////////////
   console.log("-- LkSelect --")
   console.log("--------")
+  // Create Select operation options
   var selectOptions = new LinkarFunctions.SelectOptions(false, false, 0, 0, true, false, false, false);
 
   var selectClause = ""
   var sortClause = "BY ID"
   var dictClause = ""
   var preSelectClause = ""
-
+  // Execute Select operation
   result = clt.Select(filename, selectClause, sortClause, dictClause, preSelectClause, selectOptions, "", 600)
-
+  // Extract data from string result and print
   output = process_result('Select', result)
   if (output['lstError'].length == 0) {
     console.log("Select is OK!")
@@ -313,8 +353,6 @@ try {
       for (i = 0; i < lstRecordIds.length; i++)
         console.log("Id:" + lstRecordIds[i] + " Data:" + lstRecord[i])
     }
-
-
   } else {
     console.log(output['lstError'])
     console.log("Error while conversion")
@@ -325,10 +363,12 @@ try {
   /////////////////
   console.log("-- LkSchemas --")
   console.log("--------")
-
+  
+  // Create LkSchemas operation options
   var lkSchemasOptions = new LinkarFunctions.LkSchemasOptions();
+  // Execute LkSchemas operation
   result = clt.LkSchemas(lkSchemasOptions, "", 600)
-
+  // Extract data from string result and print
   output = process_result('Schemas', result)
   if (output['lstError'].length == 0) {
     console.log("Schemas is OK!")
@@ -353,11 +393,12 @@ try {
   console.log("-- LkProperties --")
   console.log("--------")
 
+  // Create LkProperties operation options
   var lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions();
   filename = "LK.ORDERS"
-
+  // Execute LkProperties operation
   result = clt.LkProperties(filename, lkPropertiesOptions, "", 600)
-
+  // Extract data from string result and print
   output = process_result('Properties', result)
   if (output['lstError'].length == 0) {
     console.log("Properties is OK!")
@@ -370,8 +411,6 @@ try {
         console.log("Id:" + lstRecordIds[i] + " Data:" + lstRecord[i])
       }
     }
-
-
   } else {
     console.log(output['lstError'])
     console.log("Error while conversion")
@@ -382,7 +421,10 @@ try {
   /////////////////
   console.log("-- LkResetCommonBlocks --")
   console.log("--------")
+  
+  // Execute ResetCommonBlocks operation
   result = clt.ResetCommonBlocks("", 600)
+  // Extract data from string result and print
   output = process_result('ResetCommonBlocks', result)
 
   if (output['lstError'].length == 0) {
@@ -401,6 +443,8 @@ try {
   /////////////////
   console.log("-- LkLogout --")
   console.log("--------")
+  
+  // Execute Logout operation
   result = clt.Logout("", 600)
 
   console.log("Demo OK!")

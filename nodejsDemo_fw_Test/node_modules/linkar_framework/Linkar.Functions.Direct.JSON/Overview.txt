@@ -1,0 +1,8 @@
+Title: Library Overview
+
+Require:
+
+	- Linkar.Functions/LinkarFunctions
+	- Linkar.Functions.Direct/DirectFunctions
+
+This library consists of functions that perform direct operations against the Linkar Server, which are always in JSON format for data input and output.

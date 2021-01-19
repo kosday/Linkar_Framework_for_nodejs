@@ -1,0 +1,4 @@
+Title: Library Overview
+
+Set of functions that help manipulate the character strings that are used as input and output data in MV type operations (Linkar.Functions.Direct.MV and Linkar.Functions.Persistent.MV libraries).
+For example, functions that help lists of record IDs, lists of records, argument lists to be composed for subroutine operations, and in-verse functions that help elements from the responses of operations and from the result lists, etc. to be extract-ed.

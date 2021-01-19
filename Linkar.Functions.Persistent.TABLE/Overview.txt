@@ -1,0 +1,12 @@
+Title: Library Overview
+
+Require:
+
+	- Linkar.Functions/LinkarFunctions
+	- Linkar.Functions.Persistent/LinkarClient
+
+This library consists of functions that perform Persistent operations against the Linkar Server using TABLE as the output format.
+
+Two functions are also included to carry out the “Login” and “Logout” operations.
+
+There are only 3 operations that have this output format: LkSchemas, LkProperties and GetTable.

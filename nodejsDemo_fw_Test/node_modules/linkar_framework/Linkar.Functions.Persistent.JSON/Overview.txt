@@ -1,0 +1,10 @@
+Title: Library Overview
+
+Require:
+
+	- Linkar.Functions/LinkarFunctions
+	- Linkar.Functions.Persistent/LinkarClient
+
+This library consists of functions that perform Persistent operations against the Linkar Server, which are always in JSON format for data input and output.
+
+Two functions are also included to carry out the “Login” and “Logout” operations.
