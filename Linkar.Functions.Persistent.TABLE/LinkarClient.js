@@ -70,6 +70,31 @@ class LinkarClient {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentTABLE = require("linkar_framework/Linkar.Functions.Persistent.TABLE/LinkarClient")
+		
+		function MyLkSchemas()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+
+				var result = client.LkSchemas();
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	LkSchemas(lkSchemasOptions = new LinkarFunctions.LkSchemasOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -99,6 +124,31 @@ class LinkarClient {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentTABLE = require("linkar_framework/Linkar.Functions.Persistent.TABLE/LinkarClient")
+		
+		function MyLkProperties()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+
+				var result = client.LkProperties("LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	LkProperties(filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -131,6 +181,31 @@ class LinkarClient {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentTABLE = require("linkar_framework/Linkar.Functions.Persistent.TABLE/LinkarClient")
+		
+		function MyGetTable()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+
+				var result = client.GetTable("LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	GetTable(filename, selectClause = "", dictClause = "", sortClause = "", tableOptions = new LinkarFunctions.TableOptions(),
 		customVars = "", receiveTimeout = 0) {

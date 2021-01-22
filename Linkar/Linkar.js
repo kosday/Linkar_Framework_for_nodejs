@@ -7,19 +7,11 @@ class LinkarCLib {
 		var arch = process.arch;
 		if(arch == "x64" || arch == "x32")
 		{
-			var currentPath = (process.platform === 'linux' ? __dirname.replace(/\\/g, "/") + "/linux.so/" + arch + "/" : __dirname.replace(/\\/g, "/") + "/DLL/" + arch + "/" );
-			
-			var path_linkarStringsHelper = currentPath + 'Linkar.Strings.Helper';
-			var path_linkarFunctions = currentPath + 'Linkar.Functions';
-			var path_linkar = currentPath + 'Linkar';
-	
-			this.lib_linkarStringsHelper = ffi.Library(path_linkarStringsHelper, {})
+			var currentPath = (process.platform === 'linux' ? __dirname.replace(/\\/g, "/") + "/linux.so/" + arch + "/" : __dirname.replace(/\\/g, "/") + "/DLL/" + arch + "/" );		
+			var path_linkar = currentPath + 'Linkar';	
 			this.lib_linkar = ffi.Library(path_linkar, {
 				'LkExecutePersistentOperation': ['char*', ['pointer', 'pointer', 'uint8', 'string', 'uint8', 'uint8', 'uint32']],
 				'LkExecuteDirectOperation': ['char*', ['pointer', 'string', 'uint8', 'string', 'uint8', 'uint8', 'uint32']],
-			});
-	
-			this.lib_linkarFunctions = ffi.Library(path_linkarFunctions, {
 				'LkFreeMemory': ['void', ['char*']]
 			});
 		}
@@ -155,7 +147,7 @@ class Linkar {
 	/* Linkar Functions */
 
 	LkFreeMemory(lkString) {
-		linkar.lib_linkarFunctions.LkFreeMemory(lkString)
+		linkar.lib_linkar.LkFreeMemory(lkString)
 	}
 
 	/* Utils (Not from C) */

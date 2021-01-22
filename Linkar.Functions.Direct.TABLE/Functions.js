@@ -25,6 +25,29 @@ class Functions {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectTABLE = require("linkar_framework/Linkar.Functions.Direct.TABLE/Functions")
+		
+		function MyLkSchemas()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+
+				var result = LinkarFunctionsDirectMV.Functions.LkSchemas(credentials);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static LkSchemas(credentialOptions, lkSchemasOptions = new LinkarFunctions.LkSchemasOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -55,6 +78,29 @@ class Functions {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectTABLE = require("linkar_framework/Linkar.Functions.Direct.TABLE/Functions")
+		
+		function MyLkProperties()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+
+				var result = LinkarFunctionsDirectMV.Functions.LkProperties(credentials, "LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static LkProperties(credentialOptions, filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -88,6 +134,29 @@ class Functions {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectTABLE = require("linkar_framework/Linkar.Functions.Direct.TABLE/Functions")
+		
+		function MyGetTable()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+
+				var result = LinkarFunctionsDirectMV.Functions.GetTable(credentials, "LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static GetTable(credentialOptions, filename, selectClause = "", dictClause = "", sortClause = "", tableOptions = new LinkarFunctions.TableOptions(),
 		customVars = "", receiveTimeout = 0) {

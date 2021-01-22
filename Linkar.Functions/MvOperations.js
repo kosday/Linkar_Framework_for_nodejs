@@ -18,6 +18,10 @@ class MvOperations
 			number
 			
 			The number of occurrences found.
+			
+		Example:
+		---Code
+		int result = MvOperations.LkCount("CUSTOMER UPDATE 2þADDRESS 2þ444", "þ");		---
 	*/
 	static LkDCount(str, delimiter) {
 		if (str == null || str.length == 0)
@@ -43,6 +47,10 @@ class MvOperations
 			number
 			
 			The number of occurrences found.
+
+		Example:
+		---Code
+		int result = MvOperations.LkDCount("CUSTOMER UPDATE 2þADDRESS 2þ444", "þ");
 	*/
 	static LkCount(str, delimiter) {
 		if (str == null || str.length == 0)
@@ -69,6 +77,11 @@ class MvOperations
 			string
 			
 			A new string with the extracted value.
+
+		Example:
+		---Code
+		string result = MvOperations.LkExtract("CUSTOMER UPDATE 2þADDRESS 2þ444", 1);
+		---
 		*/
 	static LkExtract(str, field, value = 0, subvalue = 0) {
 		var aux = "";
@@ -112,10 +125,67 @@ class MvOperations
 			string
 			
 			A new string with replaced text.
-*/
-	static LkChange(str, strOld, strNew) {
-		var re = new RegExp(strOld, 'g');
-		return str.replace(re, strNew);
+
+		Example:
+		---Code
+		string result = MvOperations.LkChange("CUSTOMER UPDATE 2þADDRESS 2þ444", "UPDATE", "MYTEXT", 1, 1);
+		---*/
+	static LkChange(str, strOld, strNew, occurrence = 0, start = 0) {
+		if (str.length > 0)
+		{    
+			if (!start || start < 1)
+				start = 1;
+			if (!occurrence || occurrence < 0)
+				occurrence = 0;
+			var index = str.indexOf(strOld);
+			if (index >= 0)
+			{
+				var subindex = 0;
+				var next = true;
+				var count = 0;
+				while(next)
+				{    
+					subindex = str.indexOf(strOld,subindex);
+					count++;
+					if (subindex == -1 || count >= start)
+						next = false;
+					else
+						subindex = subindex + strOld.length;
+				}
+				if (subindex >= 0)
+				{
+					var initstr = str.substring(0,subindex);
+					var endstr = str.substring(subindex);
+					var maxocc = endstr.split(strOld).length;
+					if (occurrence && occurrence > 0)
+					{
+						for (var occ = 0; occ < occurrence; occ++)
+						{
+							if (occ > maxocc)
+								break;
+							endstr = endstr.replace(strOld, strNew);
+						}
+					}
+					else
+					{
+						var re = new RegExp(strOld, 'g');
+						endstr = endstr.replace(re, strNew);
+					}
+					return initstr + endstr;
+				}
+				else
+				{
+					return str;
+				}
+			}
+			else
+			{
+				return str;
+			}
+
+		}
+		else 
+			return str;
 	}
 
 /*
@@ -133,6 +203,11 @@ class MvOperations
 			string
 			
 			A new string with the replaced value.
+
+		Example:
+		---Code
+		string result = MvOperations.LkReplace("CUSTOMER UPDATE 2þADDRESS 2þ444", "MYTEXT", 1);
+		---
 	*/
 	static LkReplace(str, newVal, field, value = 0, subvalue = 0) {
 		var result = "";

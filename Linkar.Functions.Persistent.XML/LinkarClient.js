@@ -81,6 +81,40 @@ class LinkarClient {
 			string
 		
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyRead()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Read("LK.CUSTOMERS",
+								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" + 
+								"<LINKAR>" +
+								"  <RECORDS>" +
+								"    <RECORD>" +
+								"      <LKITEMID>2</LKITEMID>" +
+								"    </RECORD>" +
+								"  </RECORDS>" +
+								"</LINKAR>");
+
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Read(filename, recordIds, dictionaries = "", readOptions = new LinkarFunctions.ReadOptions(),
 		xmlFormat = XML_FORMAT.XML, customVars = "", receiveTimeout = 0) {
@@ -112,6 +146,42 @@ class LinkarClient {
 		reads the record and compares it with the copy in originalRecords, if they are equal the modified record is executed.
 		But if they are not equal, it means that the record has been modified by other user and its modification will not be saved.
 		The record will have to be read, modified and saved again.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyUpdate()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Update("LK.CUSTOMERS",
+								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
+								"<LINKAR>" +
+								"  <RECORDS>" +
+								"    <RECORD>" +
+								"      <LKITEMID>2</LKITEMID>" +
+								"      <NAME>CUSTOMER 2</NAME>" +
+								"      <ADDR>ADDRESS 2</ADDR>" +
+								"      <PHONE>444</PHONE>" +
+								"    </RECORD>" +
+								"  </RECORDS>" +
+								"</LINKAR>");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Update(filename, records, updateOptions = new LinkarFunctions.UpdateOptions(),
 		xmlFormat = XML_FORMAT.XML, customVars = "", receiveTimeout = 0) {
@@ -139,6 +209,42 @@ class LinkarClient {
 		Remarks:
 			Inside the records argument, the records always must be specified.
 			But the recordIds only must be specified when <NewOptions> argument is NULL, or when the <RecordIdType> argument of the <NewOptions> constructor is NULL.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyNew()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.New("LK.CUSTOMERS",
+								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
+								"<LINKAR>" +
+								"  <RECORDS>" +
+								"    <RECORD>" +
+								"      <LKITEMID>2</LKITEMID>" +
+								"      <NAME>CUSTOMER 2</NAME>" +
+								"      <ADDR>ADDRESS 2</ADDR>" +
+								"      <PHONE>444</PHONE>" +
+								"    </RECORD>" +
+								"  </RECORDS>" +
+								"</LINKAR>");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	New(filename, records, newOptions = new LinkarFunctions.NewOptions(),
 		xmlFormat = XML_FORMAT.XML, customVars = "", receiveTimeout = 0) {
@@ -171,6 +277,39 @@ class LinkarClient {
 			reads the record and compares it with the copy in originalRecords, if they are equal the record is deleted.
 			But if they are not equal, it means that the record has been modified by other user and the record will not be deleted.
 			The record will have to be read, and deleted again.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyDelete()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Delete("LK.CUSTOMERS",
+								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
+								"<LINKAR>" +
+								"  <RECORDS>" +
+								"    <RECORD>" +
+								"      <LKITEMID>2</LKITEMID>
+								"    </RECORD>" +
+								"  </RECORDS>" +
+								"</LINKAR>");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Delete(filename, records, deleteOptions = new LinkarFunctions.DeleteOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -204,6 +343,31 @@ class LinkarClient {
 				- Previously call to a saved list with the GET.LIST command to use it in the Main Select input
 				- Make a previous Select to use the result as the Main Select input, with the SELECT or SSELECT commands.In this case the entire sentence must be indicated in the PreselectClause. For example:SSELECT LK.ORDERS WITH CUSTOMER = '1'
 				- Exploit a Main File index to use the result as a Main Select input, with the SELECTINDEX command. The syntax for all the databases is SELECTINDEX index.name.value. For example SELECTINDEX ITEM,"101691"
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MySelect()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Select("LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Select(filename, selectClause = "", sortClause = "", dictClause = "", preSelectClause = "", selectOptions = new LinkarFunctions.SelectOptions(),
 		xmlFormat = XML_FORMAT.XML, customVars = "", receiveTimeout = 0) {
@@ -226,6 +390,39 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MySubroutine()
+			{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Subroutine("SUB.DEMOLINKAR", 3,
+								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
+								"<LINKAR>" +
+								"  <ARGUMENTS>" +
+								"    <ARGUMENT>0</ARGUMENT>" +
+								"    <ARGUMENT>qwerty</ARGUMENT>" +
+								"    <ARGUMENT></ARGUMENT>" +
+								"  </ARGUMENTS>" +
+								"</LINKAR>");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Subroutine(subroutineName, argsNumber, args,
 		customVars = "", receiveTimeout = 0) {
@@ -248,6 +445,31 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyConversion()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Conversion(CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Conversion(expression, code, conversionType,
 		customVars = "", receiveTimeout = 0) {
@@ -269,6 +491,31 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyFormat()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Format("1þ2","R#10");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Format(expression, formatSpec,
 		customVars = "", receiveTimeout = 0) {
@@ -289,6 +536,31 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyDictionaries()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Dictionaries("LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Dictionaries(filename,
 		customVars = "", receiveTimeout = 0) {
@@ -309,6 +581,31 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyExecute()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.Execute("WHO");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	Execute(statement,
 		customVars = "", receiveTimeout = 0) {
@@ -348,6 +645,31 @@ class LinkarClient {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyGetVersion()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.GetVersion();
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	GetVersion(receiveTimeout = 0) {
 		return this.linkarClient.GetVersion(DATAFORMAT_TYPE.DATAFORMAT_TYPE.XML, receiveTimeout)
@@ -374,6 +696,31 @@ class LinkarClient {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyLkSchemas()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+
+				var result = client.LkSchemas();
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	LkSchemas(lkSchemasOptions = new LinkarFunctions.LkSchemasOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -403,6 +750,31 @@ class LinkarClient {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyLkProperties()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+
+				var result = client.LkProperties("LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	LkProperties(filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -421,6 +793,31 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsPersistentXML = require("linkar_framework/Linkar.Functions.Persistent.XML/LinkarClient")
+		
+		function MyResetCommonBlocks()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				
+				var result = client.ResetCommonBlocks();
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	ResetCommonBlocks(receiveTimeout = 0) {
 		return this.linkarClient.ResetCommonBlocks(DATAFORMAT_TYPE.DATAFORMAT_TYPE.XML, receiveTimeout)

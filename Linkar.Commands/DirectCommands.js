@@ -52,6 +52,41 @@ class DirectCommands {
 		string
 		
 		The results of the operation.
+		
+		Example:
+		---Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarCommands = require("linkar_framework/Linkar.Commands/Functions")
+		
+		function MySendCommand()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				string command = 
+						"{" +
+						"	\"NAME\" : \"READ\"," +
+						"	\"COMMAND\" :" + 
+						"	{" +
+						"		\"CALCULATED\" : \"True\" ," +
+						"		\"OUTPUT_FORMAT\" : \"JSON_DICT\" ," +
+						"		\"FILE_NAME\" : \"LK.CUSTOMERS\" ," +
+						"		\"RECORDS\" : [" +
+						"			{ \"LKITEMID\" : \"2\" }" +
+						"		]" +
+						"	}" +
+						"}";
+				var result = LinkarFunctionsDirectMV.Functions.SendCommand(credentials, command);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static SendJsonCommand(credentialOptions, command, receiveTimeout = 0) {
 		return SendCommand(credentialOptions, command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.JSON, receiveTimeout );
@@ -70,6 +105,41 @@ class DirectCommands {
 		string
 		
 		The results of the operation.
+		
+		Example:
+		---Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarCommands = require("linkar_framework/Linkar.Commands/Functions")
+		
+		function MySendCommand()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				string command =
+						"{" +
+						"	\"NAME\" : \"READ\"," +
+						"	\"COMMAND\" :" + 
+						"	{" +
+						"		\"CALCULATED\" : \"True\" ," +
+						"		\"OUTPUT_FORMAT\" : \"JSON_DICT\" ," +
+						"		\"FILE_NAME\" : \"LK.CUSTOMERS\" ," +
+						"		\"RECORDS\" : [" +
+						"			{ \"LKITEMID\" : \"2\" }" +
+						"		]" +
+						"	}" +
+						"}"
+				var result = LinkarFunctionsDirectMV.Functions.SendCommand(credentials, command);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static SendXmlCommand(credentialOptions, command, receiveTimeout = 0) {
 		return SendCommand(credentialOptions, command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.XML, receiveTimeout );

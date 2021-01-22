@@ -152,6 +152,43 @@ class LinkarClient {
 			string
 			
 			The results of the operation.
+			
+		Example:
+		---Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarCommands = require("linkar_framework/Linkar.Commands/LinkarClient")
+		
+		function MySendCommand()
+		{
+			try
+			{
+				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				client.Login(credentials);
+				string command = 
+						"{" +
+						"	\"NAME\" : \"READ\"," +
+						"	\"COMMAND\" :" + 
+						"	{" +
+						"		\"CALCULATED\" : \"True\" ," +
+						"		\"OUTPUT_FORMAT\" : \"JSON_DICT\" ," +
+						"		\"FILE_NAME\" : \"LK.CUSTOMERS\" ," +
+						"		\"RECORDS\" : [" +
+						"			{ \"LKITEMID\" : \"2\" }" +
+						"		]" +
+						"	}" +
+						"}";
+				var result = client.SendCommand(command);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	SendXmlCommand(command, receiveTimeout = 0) {
 		return SendCommand(command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.XML, receiveTimeout = 0);

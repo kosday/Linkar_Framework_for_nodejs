@@ -24,6 +24,29 @@ class Functions {
 			string
 		
 			The results of the operation.
+			
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyRead()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Read(credentials, "LK.CUSTOMERS","2");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Read(credentialOptions, filename, recordIds, dictionaries = "", readOptions = new LinkarFunctions.ReadOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -38,7 +61,7 @@ class Functions {
 		Arguments:
 			credentialOptions - (<CredentialOptions>) Object with data necessary to access the Linkar Server: Username, Password, EntryPoint, Language, FreeText.
 			filename - (string) Name of the file being updated.
-			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords. Use StringFunctions.ComposeUpdateBuffer (Linkar.Strings library) function to compose this string.
+			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords. Use <StringFunctions.ComposeUpdateBuffer> (Linkar.Strings library) function to compose this string.
 			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
@@ -55,6 +78,33 @@ class Functions {
 		reads the record and compares it with the copy in originalRecords, if they are equal the modified record is executed.
 		But if they are not equal, it means that the record has been modified by other user and its modification will not be saved.
 		The record will have to be read, modified and saved again.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyUpdate()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Update(credentials, "LK.CUSTOMERS",
+									"2" + LinkarFunctions.ASCII_Chars.FS_chr + 							// RecordId
+									"CUSTOMER 2þADDRESS 2þ444" + LinkarFunctions.ASCII_Chars.FS_chr +	// Record
+									""																	// OriginalRecord
+								);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Update(credentialOptions, filename, records, updateOptions = new LinkarFunctions.UpdateOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -69,7 +119,7 @@ class Functions {
 		Arguments:
 			credentialOptions - (<CredentialOptions>) Object with data necessary to access the Linkar Server: Username, Password, EntryPoint, Language, FreeText.
 			filename - (string) The file name where the records are going to be created.
-			records - (string) Buffer of records to write. Inside this string are the recordIds, and the records. Use StringFunctions.ComposeNewBuffer (Linkar.Strings library) function to compose this string.
+			records - (string) Buffer of records to write. Inside this string are the recordIds, and the records. Use <StringFunctions.ComposeNewBuffer> function to compose this string.
 			newOptions - (<NewOptions>) Object with write options for the new record(s), including recordIdType, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
@@ -82,6 +132,32 @@ class Functions {
 		Remarks:
 			Inside the records argument, the records always must be specified.
 			But the recordIds only must be specified when <NewOptions> argument is NULL, or when the <RecordIdType> argument of the <NewOptions> constructor is NULL.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyNew()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.New(credentials, "LK.CUSTOMERS",
+									"2" + LinkarFunctions.ASCII_Chars.FS_chr +		// RecordId
+									"CUSTOMER 2þADDRESS 2þ444"						// Record
+								);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static New(credentialOptions, filename, records, newOptions = new LinkarFunctions.NewOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -114,6 +190,32 @@ class Functions {
 			reads the record and compares it with the copy in originalRecords, if they are equal the record is deleted.
 			But if they are not equal, it means that the record has been modified by other user and the record will not be deleted.
 			The record will have to be read, and deleted again.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyDelete()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Delete(credentials, "LK.CUSTOMERS",
+									"2" + LinkarFunctions.ASCII_Chars.FS_chr +		// RecordId
+									""												// OriginalRecord
+								);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Delete(credentialOptions, filename, records, deleteOptions = new LinkarFunctions.DeleteOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -147,6 +249,29 @@ class Functions {
 				- Previously call to a saved list with the GET.LIST command to use it in the Main Select input
 				- Make a previous Select to use the result as the Main Select input, with the SELECT or SSELECT commands.In this case the entire sentence must be indicated in the PreselectClause. For example:SSELECT LK.ORDERS WITH CUSTOMER = '1'
 				- Exploit a Main File index to use the result as a Main Select input, with the SELECTINDEX command. The syntax for all the databases is SELECTINDEX index.name.value. For example SELECTINDEX ITEM,"101691"
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MySelect()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Select(credentials, "LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Select(credentialOptions, filename, selectClause = "", sortClause = "", dictClause = "", preSelectClause = "", selectOptions = new LinkarFunctions.SelectOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -170,6 +295,33 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MySubroutine()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Subroutine(credentials, "SUB.DEMOLINKAR", 3,		// 3 arguments
+									"0" + ASCII_Chars.DC4_chr +			// Argument 1 (input) sleep seconds
+									"qwerty" + ASCII_Chars.DC4_chr +	// Argument 2 (input) text to convert to uppercase
+									""									// Argument 3 (output) text converted to uppercase
+								);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Subroutine(credentialOptions, subroutineName, argsNumber, args,
 		customVars = "", receiveTimeout = 0) {
@@ -193,6 +345,29 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyConversion()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Conversion(credentials, CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Conversion(credentialOptions, expression, code, conversionType,
 		customVars = "", receiveTimeout = 0) {
@@ -215,6 +390,29 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyFormat()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Format(credentials, "1þ2","R#10");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Format(credentialOptions, expression, formatSpec,
 		customVars = "", receiveTimeout = 0) {
@@ -236,6 +434,29 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyDictionaries()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Dictionaries(credentials, "LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Dictionaries(credentialOptions, filename,
 		customVars = "", receiveTimeout = 0) {
@@ -257,6 +478,29 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyExecute()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.Execute(credentials, "WHO");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static Execute(credentialOptions, statement,
 		customVars = "", receiveTimeout = 0) {
@@ -297,6 +541,29 @@ class Functions {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyGetVersion()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.GetVersion(credentials);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static GetVersion(credentialOptions,
 		receiveTimeout = 0) {
@@ -326,6 +593,29 @@ class Functions {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyLkSchemas()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+
+				var result = LinkarFunctionsDirectMV.Functions.LkSchemas(credentials);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static LkSchemas(credentialOptions, lkSchemasOptions = LinkarFunctions.LkSchemasOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -356,6 +646,29 @@ class Functions {
 			
 				TAB - char (9) for columns.
 				VT - char (11) for rows.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyLkProperties()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+
+				var result = LinkarFunctionsDirectMV.Functions.LkProperties(credentials, "LK.CUSTOMERS");
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static LkProperties(credentialOptions, filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
 		customVars = "", receiveTimeout = 0) {
@@ -375,6 +688,29 @@ class Functions {
 			string
 			
 			The results of the operation.
+
+		Example:
+		--- Code
+		var Linkar = require('linkar_framework/Linkar/Linkar')
+		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
+		var LinkarFunctionsDirectMV = require("linkar_framework/Linkar.Functions.Direct.MV/Functions")
+		
+		function MyResetCommonBlocks()
+		{
+			try
+			{
+				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
+				
+				var result = LinkarFunctionsDirectMV.Functions.ResetCommonBlocks(credentials);
+			}
+			catch (error)
+			{
+				console.log(error);
+				// Do something
+			}
+			return result;
+		}
+		---
 	*/
 	static ResetCommonBlocks(credentialOptions,
 		receiveTimeout = 0) {
