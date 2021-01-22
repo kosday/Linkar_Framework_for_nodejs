@@ -1,6 +1,6 @@
 {
   "name": "linkar_framework",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "All libraries for work with Linkar",
   "main": "linkar_framework.js",
   "scripts": {
