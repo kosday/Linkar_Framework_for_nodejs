@@ -26,22 +26,17 @@ Developers who want to create an application do not need to use all these librar
 ## Linkar Framework hierarchy
 
 - Linkar (Private)
-- Linkar.Functions (C#/Java/C open-source)
-- Linkar.Strings (C#/Java/C open-source)
-	- Linkar.LkData (C#/Java open-source)
-- Linkar.Strings.Helper ( C open-source)
-- Linkar.Commands (C#/Java/C open-source) Dependencies: Linkar
-- Linkar.Functions.Direct (C#/Java/C open-source) Dependencies: Linkar, Linkar.Functions
-	- Linkar.Functions.Direct.JSON (C#/Java/C open-source)
-	- Linkar.Functions.Direct.MV (C#/Java/C open-source)
-	- Linkar.Functions.Direct.TABLE (C#/Java/C open-source)
-	- Linkar.Functions.Direct.XML (C#/Java/C open-source)
-- Linkar.Functions.Persistent (C#/Java/C open-source) Dependencies: Linkar, Linkar.Functions
-	- Linkar.Functions.Persistent.JSON (C#/Java/C open-source)
-	- Linkar.Functions.Persistent.MV (C#/Java/C open-source)
-	- Linkar.Functions.Persistent.TABLE (C#/Java/C open-source)
-	- Linkar.Functions.Persistent.XML (C#/Java/C open-source)
-
-## Building Libraries
-
-There is a solution file "LinkarFramework.sln" for Visual Studio 2019 that can be used to compile all libraries.
+- Linkar.Functions (open-source) Dependencies: Linkar
+- Linkar.Strings (open-source) Dependencies: Linkar
+- Linkar.LkData (open-source) Dependencies: Linkar, Linkar.Strings, Linkar.Functions
+- Linkar.Commands (open-source) Dependencies: Linkar
+- Linkar.Functions.Direct (open-source) Dependencies: Linkar, Linkar.Functions
+	- Linkar.Functions.Direct.JSON (open-source)
+	- Linkar.Functions.Direct.MV (open-source)
+	- Linkar.Functions.Direct.TABLE (open-source)
+	- Linkar.Functions.Direct.XML (open-source)
+- Linkar.Functions.Persistent (open-source) Dependencies: Linkar, Linkar.Functions
+	- Linkar.Functions.Persistent.JSON (open-source)
+	- Linkar.Functions.Persistent.MV (open-source)
+	- Linkar.Functions.Persistent.TABLE (open-source)
+	- Linkar.Functions.Persistent.XML (open-source)
