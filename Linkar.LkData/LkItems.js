@@ -56,7 +56,7 @@ class LkItems extends Array {
 	*/
 	get(id) {
 		if(typeof id == 'number'){
-			return this[i];
+			return this[id];
 		}
 		else
 		{

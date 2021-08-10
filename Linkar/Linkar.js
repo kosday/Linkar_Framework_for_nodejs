@@ -158,6 +158,13 @@ class Linkar {
 		return output_buffer
 	}
 
+	LkAllocateInputBuffer(input_buffer) {
+		var output_buffer = Buffer.alloc(input_buffer.length + 1, 0)
+		input_buffer.copy(output_buffer, 0);
+		output_buffer[input_buffer.length] = 0;
+		return output_buffer
+	}
+
 	LkCloneAndFree(ret_cxx_value, free) {
 		var buff = ref.reinterpretUntilZeros(ret_cxx_value, 1)
 		var output_buffer = this.LkAllocateBuffer(buff);
@@ -186,7 +193,7 @@ class Linkar {
 	*/
 	LkExecuteDirectOperation(credentialOptions, operationCode, operationArgs, inputDataFormat, outputDataFormat, receiveTimeout) {
 		var pointer = ref.alloc(ref.types.CString);
-		var pOperationArgs = this.LkAllocateBuffer(Buffer.from(operationArgs, encoding))
+		var pOperationArgs = this.LkAllocateInputBuffer(Buffer.from(operationArgs, encoding))
 		var ret_cxx_value = linkar.lib_linkar.LkExecuteDirectOperation(pointer, credentialOptions.toString(), operationCode, pOperationArgs, inputDataFormat, outputDataFormat, receiveTimeout)
 
 		if (!ref.isNull(ret_cxx_value)) {
@@ -215,7 +222,7 @@ class Linkar {
 	*/
 	LkExecutePersistentOperation(connectionInfo, operationCode, operationArgs, inputDataFormat, outputDataFormat, receiveTimeout) {
 		var pointer = ref.alloc(ref.types.CString);
-		var pOperationArgs = this.LkAllocateBuffer(Buffer.from(operationArgs, encoding))
+		var pOperationArgs = this.LkAllocateInputBuffer(Buffer.from(operationArgs, encoding))
 		var pointerConnInfo = ref.alloc(ref.types.CString, connectionInfo.toString())
 		var ret_cxx_value = linkar.lib_linkar.LkExecutePersistentOperation(pointer, pointerConnInfo, operationCode, pOperationArgs, inputDataFormat, outputDataFormat, receiveTimeout)
 		

@@ -75,6 +75,33 @@ class OperationArguments {
 		var cmdArgs = customVars + ASCII_Chars.US_str + options + ASCII_Chars.US_str + inputData;
 		return cmdArgs;
 	}
+	
+	/*
+		Function: GetUpdatePartialArgs
+			Compose the 3 items (CUSTOMVARS, OPTIONS and INPUTDATA) of the GetUpdateArgs operation.
+		
+		Arguments:
+			filename - (string) Name of the file being updated.
+			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords. Use StringFunctions.ComposeUpdateBuffer (Linkar.Strings library) function to compose this string.
+			dictionaries - (string) List of dictionaries to write, separated by space. In MV output format is mandatory.
+			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
+			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
+		
+		Returns:
+			string
+			
+			A string ready to be used in <Linkar.LkExecuteDirectOperation> and <Linkar.LkExecutePersistentOperation>.
+	*/
+	static GetUpdatePartialArgs(filename, records, dictionaries, updateOptions, customVars) {
+		if (!updateOptions)
+			updateOptions = new UpdateOptions.UpdateOptions();
+	
+		var options = updateOptions.GetString();
+		var inputData = filename + DBMV_Mark.AM + records + ASCII_Chars.FS_str + dictionaries;
+	
+		var cmdArgs = customVars + ASCII_Chars.US_str + options + ASCII_Chars.US_str + inputData;
+		return cmdArgs;
+	}
 
 	/*
 		Function: GetNewArgs
