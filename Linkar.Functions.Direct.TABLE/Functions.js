@@ -1,6 +1,10 @@
 const LinkarFunctions = require('../Linkar.Functions/LinkarFunctions')
 const LinkarFunctionsDirect = require("../Linkar.Functions.Direct/DirectFunctions")
 
+/*
+	Class: Functions
+			These functions perform direct (without establishing permanent session) operations with output format type TABLE.
+*/
 class Functions {
 
 	/*

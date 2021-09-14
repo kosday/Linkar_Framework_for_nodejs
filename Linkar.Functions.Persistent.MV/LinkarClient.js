@@ -269,8 +269,8 @@ class LinkarClient {
 		return this.linkarClient.New(filename, records, newOptions,
 			LinkarFunctions.DATAFORMAT_TYPE.MV, LinkarFunctions.DATAFORMAT_TYPE.MV, customVars, receiveTimeout)
 	}
-	
-/*
+
+	/*
 		Function: Delete
 			Deletes one or several records in file, with MV input and output format.
 		
@@ -682,12 +682,10 @@ class LinkarClient {
 	}
 	
 	/*
-		Function: LkSchemas
-			Returns a list of all the Schemas defined in Linkar Schemas, or the EntryPoint account data files, with MV output format.
+		Function: GetVersion
+			Allows getting the server version, with MV output format.
 		
 		Arguments:
-			lkSchemasOptions - (<LkSchemasOptions>) This object defines the different options in base of the asked Schema Type: LKSCHEMAS, SQLMODE o DICTIONARIES.
-			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
 		Returns:
@@ -696,12 +694,25 @@ class LinkarClient {
 			The results of the operation.
 		
 		Remarks:
-			TABLE output format uses the defined control characters in <EntryPoints Parameters: http://kosday.com/Manuals/en_web_linkar/lk_schemas_ep_parameters.html> Table Row Separator and Column Row Separator.
+			This function returns the following information:
 			
-			By default:
-			
-				TAB - char (9) for columns.
-				VT - char (11) for rows.
+				LKMVCOMPONENTSVERSION - MV Components version.
+				LKSERVERVERSION - Linkar SERVER version.
+				LKCLIENTVERSION - Used client library version.
+				DATABASE - Database.
+				OS - Operating system.
+				DATEZERO - Date zero base in YYYYMMDD format.
+				DATEOUTPUTCONVERSION - Output conversion for date used by Linkar Schemas.
+				TIMEOUTPUTCONVERSION - Output conversion for time used by Linkar Schemas.
+				MVDATETIMESEPARATOR - DateTime used separator used by Linkar Schemas, for instance 18325,23000.
+				MVBOOLTRUE - Database used char for the Boolean true value used by Linkar Schemas.
+				MVBOOLFALSE - Database used char for the Boolean false value used by Linkar Schemas.
+				OUTPUTBOOLTRUE - Used char for the Boolean true value out of the database used by Linkar Schemas.
+				OUTPUTBOOLFALSE - Used char for the Boolean false value out of the database used by Linkar Schemas.
+				MVDECIMALSEPARATOR - Decimal separator in the database. May be point, comma or none when the database does not store decimal numbers. Used by Linkar Schemas.
+				OTHERLANGUAGES - Languages list separated by commas.
+				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
+				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
 
 		Example:
 		--- Code
@@ -709,15 +720,15 @@ class LinkarClient {
 		var LinkarFunctions = require("linkar_framework/Linkar.Functions/LinkarFunctions");
 		var LinkarFunctionsPersistentMV = require("linkar_framework/Linkar.Functions.Persistent.MV/LinkarClient")
 		
-		function MyLkSchemas()
+		function MyGetVersion()
 		{
 			try
 			{
 				var client = new LinkarFunctionsPersistentMV.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
-
-				var result = client.LkSchemas();
+				
+				var result = client.GetVersion();
 			}
 			catch (error)
 			{

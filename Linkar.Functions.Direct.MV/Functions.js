@@ -224,7 +224,7 @@ class Functions {
 			LinkarFunctions.DATAFORMAT_TYPE.MV, LinkarFunctions.DATAFORMAT_TYPE.MV, customVars, receiveTimeout)
 	}
 
-/*
+	/*
 		Function: Delete
 			Deletes one or several records in file, with MV input and output format.
 		

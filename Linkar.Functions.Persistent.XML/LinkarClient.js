@@ -92,7 +92,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -157,7 +157,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -224,7 +224,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -285,7 +285,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -317,7 +317,7 @@ class LinkarClient {
 			DATAFORMAT_TYPE.DATAFORMAT_TYPE.XML, xmlFormat, customVars, receiveTimeout)
 	}
 	
-/*
+	/*
 		Function: Delete
 			Deletes one or several records in file, with XML input and output format.
 		
@@ -353,7 +353,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -362,7 +362,7 @@ class LinkarClient {
 								"<LINKAR>" +
 								"  <RECORDS>" +
 								"    <RECORD>" +
-								"      <LKITEMID>2</LKITEMID>
+								"      <LKITEMID>2</LKITEMID>" +
 								"    </RECORD>" +
 								"  </RECORDS>" +
 								"</LINKAR>");
@@ -419,7 +419,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -466,7 +466,7 @@ class LinkarClient {
 			{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -521,7 +521,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -567,7 +567,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -612,7 +612,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -657,7 +657,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -721,7 +721,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				
@@ -772,7 +772,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 
@@ -826,7 +826,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 
@@ -869,7 +869,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentXML.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 				

@@ -3,7 +3,7 @@ const LinkarFunctionsPersistent = require("../Linkar.Functions.Persistent/Linkar
 
 /*
 	Class: LinkarClient
-		These functions perform persistent (establishing permanent session) operations with output format type XML.
+		These functions perform persistent (establishing permanent session) operations with output format type TABLE.
 */
 class LinkarClient {
 

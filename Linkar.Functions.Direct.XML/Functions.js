@@ -16,6 +16,10 @@ const XML_FORMAT = {
 	XML_SCH: 0x06
   }
 
+/*
+	class: Functions
+		These functions perform direct (without establishing permanent session) operations with output format type XML.
+*/
 class Functions {
 	
 	/*
@@ -28,7 +32,7 @@ class Functions {
 			recordIds - (string) A list of item IDs to read.
 			dictionaries - (string) List of dictionaries to read, separated by space. If this list is not set, all fields are returned. You may use the format LKFLDx where x is the attribute number.
 			readOptions - (<ReadOptions>) Object that defines the different reading options of the Function: Calculated, dictClause, conversion, formatSpec, originalRecords.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string)Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -84,7 +88,7 @@ class Functions {
 			filename - (string) Name of the file being updated.
 			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords.
 			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -140,7 +144,7 @@ class Functions {
 			LinkarFunctions.DATAFORMAT_TYPE.XML, xmlFormat, customVars, receiveTimeout)
 	}
 	
-		/*
+	/*
 		Function: UpdatePartial
 			Update one or more attributes of one or more file records, with XML input and output format.
 			
@@ -149,7 +153,7 @@ class Functions {
 			filename - (string) Name of the file being updated.
 			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords.
 			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -212,7 +216,7 @@ class Functions {
 			filename - (string) The file name where the records are going to be created.
 			records - (string) Buffer of records to write. Inside this string are the recordIds, and the records.
 			newOptions - (<NewOptions>) Object with write options for the new record(s), including recordIdType, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -265,7 +269,7 @@ class Functions {
 			LinkarFunctions.DATAFORMAT_TYPE.XML, xmlFormat, customVars, receiveTimeout)
 	}
 
-/*
+	/*
 		Function: Delete
 			Deletes one or several records in file, with XML input and output format.
 		
@@ -274,7 +278,7 @@ class Functions {
 			filename - (string) The file name where the records are going to be created.
 			records - (string) Buffer of records to be deleted.
 			deleteOptions - (<DeleteOptions>) Object with options to manage how records are deleted, including optimisticLockControl, recoverRecordIdType.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -309,7 +313,7 @@ class Functions {
 								"<LINKAR>" +
 								"  <RECORDS>" +
 								"    <RECORD>" +
-								"      <LKITEMID>2</LKITEMID>
+								"      <LKITEMID>2</LKITEMID>" +
 								"    </RECORD>" +
 								"  </RECORDS>" +
 								"</LINKAR>");
@@ -341,7 +345,7 @@ class Functions {
 			dictClause - (string) Space-delimited list of dictionaries to read. If this list is not set, all fields are returned. For example CUSTOMER DATE ITEM. You may use the format LKFLDx where x is the attribute number.
 			preSelectClause - (string) An optional command that executes before the main Select
 			selectOptions - (<SelectOptions>) Object with options to manage how records are selected, including calculated, dictionaries, conversion, formatSpec, originalRecords, onlyItemId, pagination, regPage, numPage.
-			jsonFormat - (<XML_FORMAT>) Different XML output formats.
+			xmlFormat - (<XML_FORMAT>) Different XML output formats.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		

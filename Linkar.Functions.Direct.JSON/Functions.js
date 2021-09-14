@@ -52,7 +52,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Read(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectJSON.Functions.Read(credentials, "LK.CUSTOMERS",
 								"{" +
 								"  \"RECORDS\": [" +
 								"    {" +
@@ -114,14 +114,14 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Update(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectJSON.Functions.Update(credentials, "LK.CUSTOMERS",
 								"{" +
 								"  \"RECORDS\": [" +
 								"    {" +
 								"      \"LKITEMID\": \"2\"," +
-								"      \"NAME": \"CUSTOMER 2\"," +
-								"      \"ADDR": \"ADDRESS 2\"," +
-								"      \"PHONE": \"444\"" +
+								"      \"NAME\": \"CUSTOMER 2\"," +
+								"      \"ADDR\": \"ADDRESS 2\"," +
+								"      \"PHONE\": \"444\"" +
 								"    }" +
 								"  ]" +
 								"}");
@@ -179,12 +179,12 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.UpdatePartial(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectJSON.Functions.UpdatePartial(credentials, "LK.CUSTOMERS",
 								"{" +
 								"  \"RECORDS\": [" +
 								"    {" +
 								"      \"LKITEMID\": \"2\"," +
-								"      \"NAME": \"CUSTOMER 2\"" +
+								"      \"NAME\": \"CUSTOMER 2\"" +
 								"    }" +
 								"  ]" +
 								"}");
@@ -238,14 +238,14 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.New(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectJSON.Functions.New(credentials, "LK.CUSTOMERS",
 									"{" +
 									"  \"RECORDS\": [" +
 									"    {" +
 									"      \"LKITEMID\": \"2\"," +
-									"      \"NAME": \"CUSTOMER 2\"," +
-									"      \"ADDR": \"ADDRESS 2\"," +
-									"      \"PHONE": \"444\"" +
+									"      \"NAME\": \"CUSTOMER 2\"," +
+									"      \"ADDR\": \"ADDRESS 2\"," +
+									"      \"PHONE\": \"444\"" +
 									"    }" +
 									"  ]" +
 									"}");
@@ -265,7 +265,7 @@ class Functions {
 			LinkarFunctions.DATAFORMAT_TYPE.JSON, jsonFormat, customVars, receiveTimeout)
 	}
 
-/*
+	/*
 		Function: Delete
 			Deletes one or several records in file, with JSON input and output format.
 		
@@ -304,7 +304,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Delete(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectJSON.Functions.Delete(credentials, "LK.CUSTOMERS",
 									"{" +
 									"  \"RECORDS\": [" +
 									"    {" +
@@ -368,7 +368,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Select(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectJSON.Functions.Select(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -414,7 +414,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Subroutine(credentials, "SUB.DEMOLINKAR", 3,
+				var result = LinkarFunctionsDirectJSON.Functions.Subroutine(credentials, "SUB.DEMOLINKAR", 3,
 								"{" +
 								"  \"ARGUMENTS\": [" +
 								"    {" +
@@ -473,7 +473,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Conversion(credentials, CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
+				var result = LinkarFunctionsDirectJSON.Functions.Conversion(credentials, CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
 			}
 			catch (error)
 			{
@@ -518,7 +518,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Format(credentials, "1þ2","R#10");
+				var result = LinkarFunctionsDirectJSON.Functions.Format(credentials, "1þ2","R#10");
 			}
 			catch (error)
 			{
@@ -562,7 +562,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Dictionaries(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectJSON.Functions.Dictionaries(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -606,7 +606,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Execute(credentials, "WHO");
+				var result = LinkarFunctionsDirectJSON.Functions.Execute(credentials, "WHO");
 			}
 			catch (error)
 			{
@@ -669,7 +669,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.GetVersion(credentials);
+				var result = LinkarFunctionsDirectJSON.Functions.GetVersion(credentials);
 			}
 			catch (error)
 			{
@@ -721,7 +721,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkSchemas(credentials);
+				var result = LinkarFunctionsDirectJSON.Functions.LkSchemas(credentials);
 			}
 			catch (error)
 			{
@@ -774,7 +774,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkProperties(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectJSON.Functions.LkProperties(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -816,7 +816,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.ResetCommonBlocks(credentials);
+				var result = LinkarFunctionsDirectJSON.Functions.ResetCommonBlocks(credentials);
 			}
 			catch (error)
 			{

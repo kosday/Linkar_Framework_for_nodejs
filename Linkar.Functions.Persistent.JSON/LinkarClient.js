@@ -163,9 +163,9 @@ class LinkarClient {
 								"  \"RECORDS\": [" +
 								"    {" +
 								"      \"LKITEMID\": \"2\"," +
-								"      \"NAME": \"CUSTOMER 2\"," +
-								"      \"ADDR": \"ADDRESS 2\"," +
-								"      \"PHONE": \"444\"" +
+								"      \"NAME\": \"CUSTOMER 2\"," +
+								"      \"ADDR\": \"ADDRESS 2\"," +
+								"      \"PHONE\": \"444\"" +
 								"    }" +
 								"  ]" +
 								"}");
@@ -229,7 +229,7 @@ class LinkarClient {
 								"  \"RECORDS\": [" +
 								"    {" +
 								"      \"LKITEMID\": \"2\"," +
-								"      \"NAME": \"CUSTOMER 2\"" +
+								"      \"NAME\": \"CUSTOMER 2\"" +
 								"    }" +
 								"  ]" +
 								"}");
@@ -290,9 +290,9 @@ class LinkarClient {
 									"  \"RECORDS\": [" +
 									"    {" +
 									"      \"LKITEMID\": \"2\"," +
-									"      \"NAME": \"CUSTOMER 2\"," +
-									"      \"ADDR": \"ADDRESS 2\"," +
-									"      \"PHONE": \"444\"" +
+									"      \"NAME\": \"CUSTOMER 2\"," +
+									"      \"ADDR\": \"ADDRESS 2\"," +
+									"      \"PHONE\": \"444\"" +
 									"    }" +
 									"  ]" +
 									"}");
@@ -313,7 +313,7 @@ class LinkarClient {
 			LinkarFunctions.DATAFORMAT_TYPE.JSON, jsonFormat, customVars, receiveTimeout)
 	}
 	
-/*
+	/*
 		Function: Delete
 			Deletes one or several records in file, with JSON input and output format.
 		

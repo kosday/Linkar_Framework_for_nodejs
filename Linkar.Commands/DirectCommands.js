@@ -77,7 +77,7 @@ class DirectCommands {
 						"		]" +
 						"	}" +
 						"}";
-				var result = LinkarFunctionsDirectMV.Functions.SendCommand(credentials, command);
+				var result = LinkarCommands.SendJsonCommand(credentials, command);
 			}
 			catch (error)
 			{
@@ -118,19 +118,17 @@ class DirectCommands {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				string command =
-						"{" +
-						"	\"NAME\" : \"READ\"," +
-						"	\"COMMAND\" :" + 
-						"	{" +
-						"		\"CALCULATED\" : \"True\" ," +
-						"		\"OUTPUT_FORMAT\" : \"JSON_DICT\" ," +
-						"		\"FILE_NAME\" : \"LK.CUSTOMERS\" ," +
-						"		\"RECORDS\" : [" +
-						"			{ \"LKITEMID\" : \"2\" }" +
-						"		]" +
-						"	}" +
-						"}"
-				var result = LinkarFunctionsDirectMV.Functions.SendCommand(credentials, command);
+						"&lt;COMMAND NAME=\"READ\"&gt;" +
+						"   &lt;CALCULATED&gt;True&lt;/CALCULATED&gt;" +
+						"   &lt;OUTPUT_FORMAT&gt;XML_DICT&lt;/OUTPUT_FORMAT&gt;" +
+						"   &lt;FILE_NAME&gt;LK.CUSTOMERS&lt;/FILE_NAME&gt;" +
+						"   &lt;RECORDS&gt;" +
+						"       &lt;RECORD&gt;" +
+						"           &lt;LKITEMID&gt;2&lt;/LKITEMID&gt;" + 
+						"       &lt;/RECORD&gt;" +
+						"   &lt;/RECORDS&gt;" +
+						"&lt;/COMMAND&gt;"
+				var result = LinkarCommands.SendXmlCommand(credentials, command);
 			}
 			catch (error)
 			{
