@@ -37,44 +37,43 @@ Topic: Delete Template
 		*XML template*
 			--- Code
 			<COMMAND NAME="DELETE">
-			<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
-			<RECOVER_RECORD_ID_TYPE>NONE</RECOVER_RECORD_ID_TYPE>
-			<CUSTOM_VARS></CUSTOM_VARS>
-			<INPUT_FORMAT>MV</INPUT_FORMAT>
-			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
-			<FILE_NAME></FILE_NAME>
-			<RECORD_IDS>
-				<ID><ID>
-			</RECORD_IDS>
-			<ORIGINAL_RECORD_LIST>
-				<ORIGINAL_RECORD>
-				<![CDATA[ ... ]]>or XML Tag
-				</ORIGINAL_RECORD>
-			</ORIGINAL_RECORD_LIST>
+				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+				<RECOVER_RECORD_ID_TYPE>NONE</RECOVER_RECORD_ID_TYPE>
+				<CUSTOM_VARS></CUSTOM_VARS>
+				<INPUT_FORMAT>XML</INPUT_FORMAT>
+				<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
+				<FILE_NAME></FILE_NAME>
+				<RECORDS>
+					<RECORD>
+						<LKITEMID></LKITEMID>
+						<ORIGINAL_RECORD></ORIGINAL_RECORD>
+					</RECORD>
+				</RECORDS>
 			</COMMAND>
 			---
 			
 			*JSON template*
 			--- Code
-			{ "NAME" : "DELETE", "COMMAND" :
+			{ "NAME" : "DELETE", "COMMAND" : 
 				{
 					"OPTIMISTIC_LOCK" : "False" ,
 					"RECOVER_RECORD_ID_TYPE" : "NONE" ,
 					"CUSTOM_VARS" : "" ,
-					"INPUT_FORMAT" : "MV" ,
-					"OUTPUT_FORMAT" : "MV" ,
+					"INPUT_FORMAT" : "JSON" ,
+					"OUTPUT_FORMAT" : "JSON" ,
 					"FILE_NAME" : "" ,
-					"RECORD_IDS" :
-					[
-							{ "ID" : "" }
-					] ,
-					"ORIGINAL_RECORD_LIST" :
-					[
-							{ "ORIGINAL_RECORD" : "" }
+					"RECORDS": [
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					},
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					}
 					]
 				}
-			}
-			---
+			}			---
 			
 	Delete Template for recovery deleted item ID type Linkar::
 
@@ -82,46 +81,46 @@ Topic: Delete Template
 			--- Code
 			<COMMAND NAME="DELETE">
 				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
-				<RECOVER_RECORD_ID_TYPE>Linkar</RECOVER_RECORD_ID_TYPE>
+				<RECOVER_RECORD_ID_TYPE>LINKAR</RECOVER_RECORD_ID_TYPE>
 				<RECOVER_RECORD_ID_PREFIX></RECOVER_RECORD_ID_PREFIX>
 				<RECOVER_RECORD_ID_SEPARATOR></RECOVER_RECORD_ID_SEPARATOR>
 				<CUSTOM_VARS></CUSTOM_VARS>
-				<INPUT_FORMAT>MV</INPUT_FORMAT>
-				<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+				<INPUT_FORMAT>XML</INPUT_FORMAT>
+				<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 				<FILE_NAME></FILE_NAME>
-				<RECORD_IDS>
-					<ID></ID>
-				</RECORD_IDS>
-				<ORIGINAL_RECORD_LIST>
-					<ORIGINAL_RECORD><![CDATA[ ... ]]> or XML Tag</ORIGINAL_RECORD>
-				</ORIGINAL_RECORD_LIST>
+				<RECORDS>
+					<RECORD>
+						<LKITEMID></LKITEMID>
+						<ORIGINAL_RECORD></ORIGINAL_RECORD>
+					</RECORD>
+				</RECORDS>
 			</COMMAND>
-			
 			---
 	
 		*JSON template*
 			--- Code
-			{ "NAME" : "DELETE", "COMMAND" : 
+			"NAME" : "DELETE", "COMMAND" : 
 				{
 					"OPTIMISTIC_LOCK" : "False" ,
-					"RECOVER_RECORD_ID_TYPE" : "Linkar" ,
+					"RECOVER_RECORD_ID_TYPE" : "LINKAR" ,
 					"RECOVER_RECORD_ID_PREFIX" : "" ,
 					"RECOVER_RECORD_ID_SEPARATOR" : "" ,
 					"CUSTOM_VARS" : "" ,
-					"INPUT_FORMAT" : "MV" ,
-					"OUTPUT_FORMAT" : "MV" ,
+					"INPUT_FORMAT" : "JSON" ,
+					"OUTPUT_FORMAT" : "JSON" ,
 					"FILE_NAME" : "" ,
-					"RECORD_IDS" : 
-					[ 
-									{ "ID" : "" }
-					] ,
-					"ORIGINAL_RECORD_LIST" : 
-					[ 
-									{ "ORIGINAL_RECORD" : "" }
-					] 
+					"RECORDS": [
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					},
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					}
+					]
 				}
-			}	
-			---
+						---
 	
 	Delete Template for recovery deleted item ID type Custom::
 		
@@ -131,18 +130,120 @@ Topic: Delete Template
 				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
 				<RECOVER_RECORD_ID_TYPE>CUSTOM</RECOVER_RECORD_ID_TYPE>
 				<CUSTOM_VARS></CUSTOM_VARS>
-				<INPUT_FORMAT>MV</INPUT_FORMAT>
-				<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+				<INPUT_FORMAT>XML</INPUT_FORMAT>
+				<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 				<FILE_NAME></FILE_NAME>
-				<RECORD_IDS>
-					<ID></ID>
-				</RECORD_IDS>
-				<ORIGINAL_RECORD_LIST>
-					<ORIGINAL_RECORD><![CDATA[ ... ]]> or XML Tag</ORIGINAL_RECORD>
-				</ORIGINAL_RECORD_LIST>
+				<RECORDS>
+					<RECORD>
+						<LKITEMID></LKITEMID>
+						<ORIGINAL_RECORD></ORIGINAL_RECORD>
+					</RECORD>
+				</RECORDS>
 			</COMMAND>
 			---
 		
+		*JSON template*
+			--- Code
+			"NAME" : "DELETE", "COMMAND" : 
+				{
+					"OPTIMISTIC_LOCK" : "False" ,
+					"RECOVER_RECORD_ID_TYPE" : "CUSTOM" ,
+					"CUSTOM_VARS" : "" ,
+					"INPUT_FORMAT" : "JSON" ,
+					"OUTPUT_FORMAT" : "JSON" ,
+					"FILE_NAME" : "" ,
+					"RECORDS": [
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					},
+					{ 
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					}
+					]
+				}
+			---
+
+	Delete Template for NOT recovery deleted item ID with MV data::
+
+		*XML template*
+			--- Code
+			<COMMAND NAME="DELETE">
+				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+				<RECOVER_RECORD_ID_TYPE>NONE</RECOVER_RECORD_ID_TYPE>
+				<CUSTOM_VARS></CUSTOM_VARS>
+				<INPUT_FORMAT>MV</INPUT_FORMAT>
+				<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+				<FILE_NAME></FILE_NAME>
+				<RECORDS></RECORDS>
+			</COMMAND>
+			---
+
+		*JSON template*
+			--- Code
+			{ "NAME" : "DELETE", "COMMAND" : 
+				{
+					"OPTIMISTIC_LOCK" : "False" ,
+					"RECOVER_RECORD_ID_TYPE" : "NONE" ,
+					"CUSTOM_VARS" : "" ,
+					"INPUT_FORMAT" : "MV" ,
+					"OUTPUT_FORMAT" : "MV" ,
+					"FILE_NAME" : "" ,
+					"RECORDS": ""
+				}
+			}			
+			---
+
+	Delete Template for recovery deleted item ID type Linkar with MV data::
+
+		*XML template*
+			--- Code
+			<COMMAND NAME="DELETE">
+				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+				<RECOVER_RECORD_ID_TYPE>LINKAR</RECOVER_RECORD_ID_TYPE>
+				<RECOVER_RECORD_ID_PREFIX></RECOVER_RECORD_ID_PREFIX>
+				<RECOVER_RECORD_ID_SEPARATOR></RECOVER_RECORD_ID_SEPARATOR>
+				<CUSTOM_VARS></CUSTOM_VARS>
+				<INPUT_FORMAT>MV</INPUT_FORMAT>
+				<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+				<FILE_NAME></FILE_NAME>
+				<RECORDS></RECORDS>
+			</COMMAND>
+			---
+
+		*JSON template*
+			--- Code
+			{ "NAME" : "DELETE", "COMMAND" : 
+				{
+					"OPTIMISTIC_LOCK" : "False" ,
+					"RECOVER_RECORD_ID_TYPE" : "LINKAR" ,
+					"RECOVER_RECORD_ID_PREFIX" : "" ,
+					"RECOVER_RECORD_ID_SEPARATOR" : "" ,
+					"CUSTOM_VARS" : "" ,
+					"INPUT_FORMAT" : "MV" ,
+					"OUTPUT_FORMAT" : "MV" ,
+					"FILE_NAME" : "" ,
+					"RECORDS": ""
+				}
+			}
+			---
+
+	Delete Template for recovery deleted item ID type Custom with MV data::
+
+		*XML template*
+			--- Code
+			<COMMAND NAME="DELETE">
+				<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+				<RECOVER_RECORD_ID_TYPE>CUSTOM</RECOVER_RECORD_ID_TYPE>
+				<CUSTOM_VARS></CUSTOM_VARS>
+				<INPUT_FORMAT>MV</INPUT_FORMAT>
+				<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+				<FILE_NAME></FILE_NAME>
+				<RECORDS></RECORDS>
+			</COMMAND>
+			---
+
 		*JSON template*
 			--- Code
 			{ "NAME" : "DELETE", "COMMAND" : 
@@ -153,18 +254,11 @@ Topic: Delete Template
 					"INPUT_FORMAT" : "MV" ,
 					"OUTPUT_FORMAT" : "MV" ,
 					"FILE_NAME" : "" ,
-					"RECORD_IDS" : 
-					[ 
-							{ "ID" : "" }
-					] ,
-					"ORIGINAL_RECORD_LIST" : 
-					[ 
-							{ "ORIGINAL_RECORD" : "" }
-					] 
+					"RECORDS": ""
 				}
 			}
 			---
-	
+
 Topic: Dictionaries Template
 
 	*XML template*
@@ -209,7 +303,6 @@ Topic: Execute Template
 	}
 	---
 
-
 Topic: Format Template
 
 	*XML template*
@@ -233,7 +326,6 @@ Topic: Format Template
 		}
 	}
 	---
-
 
 Topic: GetTable Template
 
@@ -428,7 +520,6 @@ Topic: GetVersion Template
 		}
 	}	
 	---
-	
 	
 Topic: LkProperties Template
 
@@ -627,25 +718,20 @@ Topic: New Template
 		<COMMAND NAME="NEW">
 			<READ_AFTER>False</READ_AFTER>
 			<CALCULATED>False</CALCULATED>
-			<DICTIONARIES>False</DICTIONARIES>
 			<CONVERSION>False</CONVERSION>
 			<FORMAT_SPEC>False</FORMAT_SPEC>
 			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
-			<NEW_RECORD_ID_TYPE>Linkar</NEW_RECORD_ID_TYPE>
-			<NEW_RECORD_ID_FORMAT_SPEC></NEW_RECORD_ID_FORMAT_SPEC>
-			<NEW_RECORD_ID_PREFIX></NEW_RECORD_ID_PREFIX>
-			<NEW_RECORD_ID_SEPARATOR></NEW_RECORD_ID_SEPARATOR>
+			<NEW_RECORD_ID_TYPE>NONE</NEW_RECORD_ID_TYPE>
 			<CUSTOM_VARS></CUSTOM_VARS>
-			<INPUT_FORMAT>MV</INPUT_FORMAT>
-			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<INPUT_FORMAT>XML</INPUT_FORMAT>
+			<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 			<FILE_NAME></FILE_NAME>
-			<RECORD_IDS>
-				<ID></ID>
-			</RECORD_IDS>
-			<RECORD_LIST>
-				<RECORD><![CDATA[ ... ]]> or XML Tag</RECORD>
-			</RECORD_LIST>
-		</COMMAND>		
+			<RECORDS>
+				<RECORD>
+					<LKITEMID></LKITEMID>
+				</RECORD>
+			</RECORDS>
+		</COMMAND>
 		---
 		
 		*JSON template*
@@ -654,22 +740,19 @@ Topic: New Template
 			{
 				"READ_AFTER" : "False" ,
 				"CALCULATED" : "False" ,
-				"DICTIONARIES" : "False" ,
 				"CONVERSION" : "False" ,
 				"FORMAT_SPEC" : "False" ,
 				"ORIGINAL_RECORDS" : "False" ,
 				"NEW_RECORD_ID_TYPE" : "NONE" ,
 				"CUSTOM_VARS" : "" ,
-				"INPUT_FORMAT" : "MV" ,
-				"OUTPUT_FORMAT" : "MV" ,
+				"INPUT_FORMAT" : "JSON" ,
+				"OUTPUT_FORMAT" : "JSON" ,
 				"FILE_NAME" : "" ,
-				"RECORD_IDS" : 
-				[ 
-						{ "ID" : "" }
-				] ,
-				"RECORD_LIST" : 
-				[ 
-						{ "RECORD" : "" }
+				"RECORDS":
+				[
+				  {
+					"LKITEMID": ""
+				  }
 				] 
 			}
 		}
@@ -682,24 +765,22 @@ Topic: New Template
 		<COMMAND NAME="NEW">
 			<READ_AFTER>False</READ_AFTER>
 			<CALCULATED>False</CALCULATED>
-			<DICTIONARIES>False</DICTIONARIES>
 			<CONVERSION>False</CONVERSION>
 			<FORMAT_SPEC>False</FORMAT_SPEC>
 			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
-			<NEW_RECORD_ID_TYPE>Linkar</NEW_RECORD_ID_TYPE>
+			<NEW_RECORD_ID_TYPE>LINKAR</NEW_RECORD_ID_TYPE>
 			<NEW_RECORD_ID_FORMAT_SPEC></NEW_RECORD_ID_FORMAT_SPEC>
 			<NEW_RECORD_ID_PREFIX></NEW_RECORD_ID_PREFIX>
 			<NEW_RECORD_ID_SEPARATOR></NEW_RECORD_ID_SEPARATOR>
 			<CUSTOM_VARS></CUSTOM_VARS>
-			<INPUT_FORMAT>MV</INPUT_FORMAT>
-			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<INPUT_FORMAT>XML</INPUT_FORMAT>
+			<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 			<FILE_NAME></FILE_NAME>
-			<RECORD_IDS>
-				<ID></ID>
-			</RECORD_IDS>
-			<RECORD_LIST>
-				<RECORD><![CDATA[ ... ]]> or XML Tag</RECORD>
-			</RECORD_LIST>
+			<RECORDS>
+				<RECORD>
+					<LKITEMID></LKITEMID>
+				</RECORD>
+			</RECORDS>
 		</COMMAND>
 		---
 		
@@ -709,53 +790,47 @@ Topic: New Template
 			{
 				"READ_AFTER" : "False" ,
 				"CALCULATED" : "False" ,
-				"DICTIONARIES" : "False" ,
 				"CONVERSION" : "False" ,
 				"FORMAT_SPEC" : "False" ,
 				"ORIGINAL_RECORDS" : "False" ,
-				"NEW_RECORD_ID_TYPE" : "Linkar" ,
+				"NEW_RECORD_ID_TYPE" : "LINKAR" ,
 				"NEW_RECORD_ID_FORMAT_SPEC" : "" ,
 				"NEW_RECORD_ID_PREFIX" : "" ,
 				"NEW_RECORD_ID_SEPARATOR" : "" ,
 				"CUSTOM_VARS" : "" ,
-				"INPUT_FORMAT" : "MV" ,
-				"OUTPUT_FORMAT" : "MV" ,
+				"INPUT_FORMAT" : "JSON" ,
+				"OUTPUT_FORMAT" : "JSON" ,
 				"FILE_NAME" : "" ,
-				"RECORD_IDS" : 
-				[ 
-						{ "ID" : "" }
-				] ,
-				"RECORD_LIST" : 
-				[ 
-						{ "RECORD" : "" }
-				] 
+				"RECORDS":
+				[
+				  {
+					"LKITEMID": ""
+				  }
+				]  
 			}
-		}		
+		}
 		---
 	
 	New Template for generation of item ID type Custom::
 
 		*XML template*
-		--- Code
 		<COMMAND NAME="NEW">
 			<READ_AFTER>False</READ_AFTER>
 			<CALCULATED>False</CALCULATED>
-			<DICTIONARIES>False</DICTIONARIES>
 			<CONVERSION>False</CONVERSION>
 			<FORMAT_SPEC>False</FORMAT_SPEC>
 			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
 			<NEW_RECORD_ID_TYPE>CUSTOM</NEW_RECORD_ID_TYPE>
 			<CUSTOM_VARS></CUSTOM_VARS>
-			<INPUT_FORMAT>MV</INPUT_FORMAT>
-			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<INPUT_FORMAT>XML</INPUT_FORMAT>
+			<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 			<FILE_NAME></FILE_NAME>
-			<RECORD_IDS>
-				<ID></ID>
-			</RECORD_IDS>
-			<RECORD_LIST>
-				<RECORD><![CDATA[ ... ]]> or XML Tag</RECORD>
-			</RECORD_LIST>
-		</COMMAND>		
+			<RECORDS>
+				<RECORD>
+					<LKITEMID></LKITEMID>
+				</RECORD>
+			</RECORDS>
+		</COMMAND>	
 		---
 		
 		*JSON template*
@@ -764,25 +839,22 @@ Topic: New Template
 			{
 				"READ_AFTER" : "False" ,
 				"CALCULATED" : "False" ,
-				"DICTIONARIES" : "False" ,
 				"CONVERSION" : "False" ,
 				"FORMAT_SPEC" : "False" ,
 				"ORIGINAL_RECORDS" : "False" ,
 				"NEW_RECORD_ID_TYPE" : "CUSTOM" ,
 				"CUSTOM_VARS" : "" ,
-				"INPUT_FORMAT" : "MV" ,
-				"OUTPUT_FORMAT" : "MV" ,
+				"INPUT_FORMAT" : "JSON" ,
+				"OUTPUT_FORMAT" : "JSON" ,
 				"FILE_NAME" : "" ,
-				"RECORD_IDS" : 
-				[ 
-						{ "ID" : "" }
-				] ,
-				"RECORD_LIST" : 
-				[ 
-						{ "RECORD" : "" }
+				"RECORDS":
+				[
+				  {
+					"LKITEMID": ""
+				  }
 				] 
 			}
-		}		
+		}
 		---
 	
 	New Template for generation of item ID type Random::
@@ -792,7 +864,177 @@ Topic: New Template
 		<COMMAND NAME="NEW">
 			<READ_AFTER>False</READ_AFTER>
 			<CALCULATED>False</CALCULATED>
-			<DICTIONARIES>False</DICTIONARIES>
+			<CONVERSION>False</CONVERSION>
+			<FORMAT_SPEC>False</FORMAT_SPEC>
+			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+			<NEW_RECORD_ID_TYPE>RANDOM</NEW_RECORD_ID_TYPE>
+			<NEW_RECORD_ID_LENGTH>0</NEW_RECORD_ID_LENGTH>
+			<NEW_RECORD_ID_NUMERIC>False</NEW_RECORD_ID_NUMERIC>
+			<CUSTOM_VARS></CUSTOM_VARS>
+			<INPUT_FORMAT>XML</INPUT_FORMAT>
+			<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
+			<FILE_NAME></FILE_NAME>
+			<RECORDS>
+				<RECORD>
+					<LKITEMID></LKITEMID>
+				</RECORD>
+			</RECORDS>
+		</COMMAND>
+		---
+		
+		*JSON template*
+		--- Code
+		{ "NAME" : "NEW", "COMMAND" : 
+			{
+				"READ_AFTER" : "False" ,
+				"CALCULATED" : "False" ,
+				"CONVERSION" : "False" ,
+				"FORMAT_SPEC" : "False" ,
+				"ORIGINAL_RECORDS" : "False" ,
+				"NEW_RECORD_ID_TYPE" : "RANDOM" ,
+				"NEW_RECORD_ID_LENGTH" : "0" ,
+				"NEW_RECORD_ID_NUMERIC" : "False" ,
+				"CUSTOM_VARS" : "" ,
+				"INPUT_FORMAT" : "JSON" ,
+				"OUTPUT_FORMAT" : "JSON" ,
+				"FILE_NAME" : "" ,
+				"RECORDS":
+				[
+				  {
+					"LKITEMID": ""
+				  }
+				] 
+			}
+		}	
+		---
+
+	New Template for NOT auto item ID generation with MV data::
+
+		*XML template*
+		--- Code
+		<COMMAND NAME="NEW">
+			<READ_AFTER>False</READ_AFTER>
+			<CALCULATED>False</CALCULATED>
+			<CONVERSION>False</CONVERSION>
+			<FORMAT_SPEC>False</FORMAT_SPEC>
+			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+			<NEW_RECORD_ID_TYPE>NONE</NEW_RECORD_ID_TYPE>
+			<CUSTOM_VARS></CUSTOM_VARS>
+			<INPUT_FORMAT>MV</INPUT_FORMAT>
+			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<FILE_NAME></FILE_NAME>
+			<RECORDS></RECORDS>
+		</COMMAND>
+		---
+
+		*JSON template*
+		--- Code
+		{ "NAME" : "NEW", "COMMAND" : 
+			{
+				"READ_AFTER" : "False" ,
+				"CALCULATED" : "False" ,
+				"CONVERSION" : "False" ,
+				"FORMAT_SPEC" : "False" ,
+				"ORIGINAL_RECORDS" : "False" ,
+				"NEW_RECORD_ID_TYPE" : "NONE" ,
+				"CUSTOM_VARS" : "" ,
+				"INPUT_FORMAT" : "MV" ,
+				"OUTPUT_FORMAT" : "MV" ,
+				"FILE_NAME" : "" ,
+				"RECORDS": "" 
+			}
+		}
+		---
+	
+	New Template for generation of item ID type Linkar with MV data::
+
+		*XML template*
+		--- Code
+		<COMMAND NAME="NEW">
+			<READ_AFTER>False</READ_AFTER>
+			<CALCULATED>False</CALCULATED>
+			<CONVERSION>False</CONVERSION>
+			<FORMAT_SPEC>False</FORMAT_SPEC>
+			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+			<NEW_RECORD_ID_TYPE>LINKAR</NEW_RECORD_ID_TYPE>
+			<NEW_RECORD_ID_FORMAT_SPEC></NEW_RECORD_ID_FORMAT_SPEC>
+			<NEW_RECORD_ID_PREFIX></NEW_RECORD_ID_PREFIX>
+			<NEW_RECORD_ID_SEPARATOR></NEW_RECORD_ID_SEPARATOR>
+			<CUSTOM_VARS></CUSTOM_VARS>
+			<INPUT_FORMAT>MV</INPUT_FORMAT>
+			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<FILE_NAME></FILE_NAME>
+			<RECORDS></RECORDS>
+		</COMMAND>
+		---
+
+		*JSON template*
+		--- Code
+		{ "NAME" : "NEW", "COMMAND" : 
+			{
+				"READ_AFTER" : "False" ,
+				"CALCULATED" : "False" ,
+				"CONVERSION" : "False" ,
+				"FORMAT_SPEC" : "False" ,
+				"ORIGINAL_RECORDS" : "False" ,
+				"NEW_RECORD_ID_TYPE" : "LINKAR" ,
+				"NEW_RECORD_ID_FORMAT_SPEC" : "" ,
+				"NEW_RECORD_ID_PREFIX" : "" ,
+				"NEW_RECORD_ID_SEPARATOR" : "" ,
+				"CUSTOM_VARS" : "" ,
+				"INPUT_FORMAT" : "MV" ,
+				"OUTPUT_FORMAT" : "MV" ,
+				"FILE_NAME" : "" ,
+				"RECORDS": ""  
+			}
+		}
+		---
+
+	New Template for generation of item ID type Custom with MV data::
+
+		*XML template*
+		--- Code
+		<COMMAND NAME="NEW">
+			<READ_AFTER>False</READ_AFTER>
+			<CALCULATED>False</CALCULATED>
+			<CONVERSION>False</CONVERSION>
+			<FORMAT_SPEC>False</FORMAT_SPEC>
+			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+			<NEW_RECORD_ID_TYPE>CUSTOM</NEW_RECORD_ID_TYPE>
+			<CUSTOM_VARS></CUSTOM_VARS>
+			<INPUT_FORMAT>MV</INPUT_FORMAT>
+			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+			<FILE_NAME></FILE_NAME>
+			<RECORDS></RECORDS>
+		</COMMAND>
+		---
+
+		*JSON template*
+		--- Code
+		{ "NAME" : "NEW", "COMMAND" : 
+			{
+				"READ_AFTER" : "False" ,
+				"CALCULATED" : "False" ,
+				"CONVERSION" : "False" ,
+				"FORMAT_SPEC" : "False" ,
+				"ORIGINAL_RECORDS" : "False" ,
+				"NEW_RECORD_ID_TYPE" : "CUSTOM" ,
+				"CUSTOM_VARS" : "" ,
+				"INPUT_FORMAT" : "MV" ,
+				"OUTPUT_FORMAT" : "MV" ,
+				"FILE_NAME" : "" ,
+				"RECORDS": ""
+			}
+		}
+		---
+
+	New Template for generation of item ID type Random::
+
+		*XML template*
+		--- Code
+		<COMMAND NAME="NEW">
+			<READ_AFTER>False</READ_AFTER>
+			<CALCULATED>False</CALCULATED>
 			<CONVERSION>False</CONVERSION>
 			<FORMAT_SPEC>False</FORMAT_SPEC>
 			<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
@@ -803,22 +1045,16 @@ Topic: New Template
 			<INPUT_FORMAT>MV</INPUT_FORMAT>
 			<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
 			<FILE_NAME></FILE_NAME>
-			<RECORD_IDS>
-				<ID></ID>
-			</RECORD_IDS>
-			<RECORD_LIST>
-				<RECORD><![CDATA[ ... ]]> or XML Tag</RECORD>
-			</RECORD_LIST>
-		</COMMAND>
+			<RECORDS></RECORDS>
+		</COMMAND>		
 		---
-		
+
 		*JSON template*
 		--- Code
 		{ "NAME" : "NEW", "COMMAND" : 
 			{
 				"READ_AFTER" : "False" ,
 				"CALCULATED" : "False" ,
-				"DICTIONARIES" : "False" ,
 				"CONVERSION" : "False" ,
 				"FORMAT_SPEC" : "False" ,
 				"ORIGINAL_RECORDS" : "False" ,
@@ -829,18 +1065,10 @@ Topic: New Template
 				"INPUT_FORMAT" : "MV" ,
 				"OUTPUT_FORMAT" : "MV" ,
 				"FILE_NAME" : "" ,
-				"RECORD_IDS" : 
-				[ 
-						{ "ID" : "" }
-				] ,
-				"RECORD_LIST" : 
-				[ 
-						{ "RECORD" : "" }
-				] 
+				"RECORDS": "" 
 			}
-		}		
+		}
 		---
-	
 
 Topic: Read Template
 
@@ -848,18 +1076,19 @@ Topic: Read Template
 	--- Code
 	<COMMAND NAME="READ">
 		<CALCULATED>False</CALCULATED>
-		<DICTIONARIES>False</DICTIONARIES>
 		<CONVERSION>False</CONVERSION>
 		<FORMAT_SPEC>False</FORMAT_SPEC>
 		<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
 		<CUSTOM_VARS></CUSTOM_VARS>
-		<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+		<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 		<FILE_NAME></FILE_NAME>
-		<RECORD_IDS>
-			<ID></ID>
-		</RECORD_IDS>
-		<RECORD_DICTCLAUSE></RECORD_DICTCLAUSE>
-	</COMMAND>	
+		<DICT_CLAUSE></DICT_CLAUSE>
+		<RECORDS>
+			<RECORD>
+				<LKITEMID></LKITEMID>
+			</RECORD>
+		</RECORDS>
+	</COMMAND>
 	---
 	
 	*JSON template*
@@ -867,18 +1096,49 @@ Topic: Read Template
 	{ "NAME" : "READ", "COMMAND" : 
 		{ 
 			"CALCULATED" : "False" ,
-			"DICTIONARIES" : "False" ,
+			"CONVERSION" : "False" ,
+			"FORMAT_SPEC" : "False" ,
+			"ORIGINAL_RECORDS" : "False" ,
+			"CUSTOM_VARS" : "" ,
+			"OUTPUT_FORMAT" : "JSON" ,
+			"FILE_NAME" : "" ,
+			"DICT_CLAUSE" : "",
+			"RECORDS" : 
+			[ 
+				{ "LKITEMID" : "" } 
+			]
+		}
+	}
+	---
+
+	*XML template with MV*
+	--- Code
+	<COMMAND NAME="READ">
+		<CALCULATED>False</CALCULATED>
+		<CONVERSION>False</CONVERSION>
+		<FORMAT_SPEC>False</FORMAT_SPEC>
+		<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+		<CUSTOM_VARS></CUSTOM_VARS>
+		<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+		<FILE_NAME></FILE_NAME>
+		<DICT_CLAUSE></DICT_CLAUSE>
+		<RECORDS></RECORDS>
+	</COMMAND>
+	---
+
+	*JSON template with MV*
+	--- Code
+	{ "NAME" : "READ", "COMMAND" : 
+		{ 
+			"CALCULATED" : "False" ,
 			"CONVERSION" : "False" ,
 			"FORMAT_SPEC" : "False" ,
 			"ORIGINAL_RECORDS" : "False" ,
 			"CUSTOM_VARS" : "" ,
 			"OUTPUT_FORMAT" : "MV" ,
 			"FILE_NAME" : "" ,
-			"RECORD_IDS" : 
-			[ 
-					{ "ID" : "" } 
-			] ,
-			"RECORD_DICTCLAUSE" : ""
+			"DICT_CLAUSE" : "",
+			"RECORDS": ""
 		}
 	}
 	---
@@ -974,24 +1234,20 @@ Topic: Update Template
 	<COMMAND NAME="UPDATE">
 		<READ_AFTER>False</READ_AFTER>
 		<CALCULATED>False</CALCULATED>
-		<DICTIONARIES>False</DICTIONARIES>
 		<CONVERSION>False</CONVERSION>
 		<FORMAT_SPEC>False</FORMAT_SPEC>
 		<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
 		<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
 		<CUSTOM_VARS></CUSTOM_VARS>
-		<INPUT_FORMAT>MV</INPUT_FORMAT>
-		<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+		<INPUT_FORMAT>XML</INPUT_FORMAT>
+		<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
 		<FILE_NAME></FILE_NAME>
-		<RECORD_IDS>
-			<ID></ID>
-		</RECORD_IDS>
-		<RECORD_LIST>
-			<RECORD><![CDATA[ ... ]]> or XML Tag</RECORD>
-		</RECORD_LIST>
-		<ORIGINAL_RECORD_LIST>
-			<ORIGINAL_RECORD><![CDATA[ ... ]]> or XML Tag</ORIGINAL_RECORD>
-		</ORIGINAL_RECORD_LIST>
+		<RECORDS>
+			<RECORD>
+				<LKITEMID></LKITEMID>
+				<ORIGINAL_RECORD></ORIGINAL_RECORD>
+			</RECORD>
+		</RECORDS>
 	</COMMAND>
 	---
 	
@@ -1001,7 +1257,49 @@ Topic: Update Template
 		{
 			"READ_AFTER" : "False" ,
 			"CALCULATED" : "False" ,
-			"DICTIONARIES" : "False" ,
+			"CONVERSION" : "False" ,
+			"FORMAT_SPEC" : "False" ,
+			"ORIGINAL_RECORDS" : "False" ,
+			"OPTIMISTIC_LOCK" : "False" ,
+			"CUSTOM_VARS" : "" ,
+			"INPUT_FORMAT" : "JSON" ,
+			"OUTPUT_FORMAT" : "JSON" ,
+			"FILE_NAME" : "" ,
+			"RECORDS":
+				[
+					{
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					}
+				]
+		  } 
+		}
+	}
+	---
+
+	*XML template with MV data*
+	--- Code
+	<COMMAND NAME="UPDATE">
+		<READ_AFTER>False</READ_AFTER>
+		<CALCULATED>False</CALCULATED>
+		<CONVERSION>False</CONVERSION>
+		<FORMAT_SPEC>False</FORMAT_SPEC>
+		<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+		<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+		<CUSTOM_VARS></CUSTOM_VARS>
+		<INPUT_FORMAT>MV</INPUT_FORMAT>
+		<OUTPUT_FORMAT>MV</OUTPUT_FORMAT>
+		<FILE_NAME></FILE_NAME>
+		<RECORDS></RECORDS>
+	</COMMAND>
+	---
+	
+	*JSON template with MV data*
+	--- Code
+	{ "NAME" : "UPDATE", "COMMAND" : 
+		{
+			"READ_AFTER" : "False" ,
+			"CALCULATED" : "False" ,
 			"CONVERSION" : "False" ,
 			"FORMAT_SPEC" : "False" ,
 			"ORIGINAL_RECORDS" : "False" ,
@@ -1010,20 +1308,59 @@ Topic: Update Template
 			"INPUT_FORMAT" : "MV" ,
 			"OUTPUT_FORMAT" : "MV" ,
 			"FILE_NAME" : "" ,
-			"RECORD_IDS" : 
-			[ 
-					{ "ID" : "" }
-			] ,
-			"RECORD_LIST" : 
-			[ 
-					{ "RECORD" : "" }
-			] ,
-			"ORIGINAL_RECORD_LIST" : 
-			[ 
-					{ "ORIGINAL_RECORD" : "" }
-			] 
+			"RECORDS": ""
+		  } 
 		}
 	}
 	---
 	
+Topic: UpdatePartial Template
 
+	*XML template*
+	--- Code
+	<COMMAND NAME="UPDATEPARTIAL">
+		<READ_AFTER>False</READ_AFTER>
+		<CALCULATED>False</CALCULATED>
+		<CONVERSION>False</CONVERSION>
+		<FORMAT_SPEC>False</FORMAT_SPEC>
+		<ORIGINAL_RECORDS>False</ORIGINAL_RECORDS>
+		<OPTIMISTIC_LOCK>False</OPTIMISTIC_LOCK>
+		<CUSTOM_VARS></CUSTOM_VARS>
+		<INPUT_FORMAT>XML</INPUT_FORMAT>
+		<OUTPUT_FORMAT>XML</OUTPUT_FORMAT>
+		<FILE_NAME></FILE_NAME>
+		<RECORDS>
+			<RECORD>
+				<LKITEMID></LKITEMID>
+				<ORIGINAL_RECORD></ORIGINAL_RECORD>
+			</RECORD>
+		</RECORDS>
+	</COMMAND>
+	---
+	
+	*JSON template*
+	--- Code
+	{ "NAME" : "UPDATEPARTIAL", "COMMAND" : 
+		{
+			"READ_AFTER" : "False" ,
+			"CALCULATED" : "False" ,
+			"CONVERSION" : "False" ,
+			"FORMAT_SPEC" : "False" ,
+			"ORIGINAL_RECORDS" : "False" ,
+			"OPTIMISTIC_LOCK" : "False" ,
+			"CUSTOM_VARS" : "" ,
+			"INPUT_FORMAT" : "JSON" ,
+			"OUTPUT_FORMAT" : "JSON" ,
+			"FILE_NAME" : "" ,
+			"RECORDS":
+				[
+					{
+						"LKITEMID": "",
+						"ORIGINAL_RECORD": ""
+					}
+				]
+		  } 
+		}
+	}
+	---
+	
