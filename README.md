@@ -25,7 +25,7 @@ Developers who want to create an application do not need to use all these librar
 
 ## Linkar Framework hierarchy
 
-- Linkar (Private)
+- Linkar (open-source) Need Linkar C Private Library in order to connect with Linkar Server
 - Linkar.Functions (open-source) Dependencies: Linkar
 - Linkar.Strings (open-source) Dependencies: Linkar
 - Linkar.LkData (open-source) Dependencies: Linkar, Linkar.Strings, Linkar.Functions
