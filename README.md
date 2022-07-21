@@ -1,4 +1,4 @@
-# Linkar_Framework_for_nodejs_BETA
+# Linkar_Framework_for_nodejs
 
 Linkar Framework is a set of open-source libraries that allows developers to create their own applications that connect to the linked Linkar Server to access the different MV Data-bases.
 
