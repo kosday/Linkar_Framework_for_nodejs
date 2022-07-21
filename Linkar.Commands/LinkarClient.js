@@ -173,7 +173,7 @@ class LinkarClient {
 		}
 	*/
 	SendJsonCommand(command, receiveTimeout = 0) {
-		return SendCommand(command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.JSON, receiveTimeout = 0);
+		return SendCommand(command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.JSON, receiveTimeout);
 	}
 
 	/*
@@ -225,7 +225,7 @@ class LinkarClient {
 		---
 	*/
 	SendXmlCommand(command, receiveTimeout = 0) {
-		return SendCommand(command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.XML, receiveTimeout = 0);
+		return SendCommand(command, ENVELOPE_FORMAT.ENVELOPE_FORMAT.XML, receiveTimeout);
 	}
 }
 

@@ -42,7 +42,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkSchemas(credentials);
+				var result = LinkarFunctionsDirectTABLE.Functions.LkSchemas(credentials);
 			}
 			catch (error)
 			{
@@ -95,7 +95,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkProperties(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectTABLE.Functions.LkProperties(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -151,7 +151,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.GetTable(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectTABLE.Functions.GetTable(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -164,7 +164,7 @@ class Functions {
 	*/
 	static GetTable(credentialOptions, filename, selectClause = "", dictClause = "", sortClause = "", tableOptions = new LinkarFunctions.TableOptions(),
 		customVars = "", receiveTimeout = 0) {
-		return LinkarFunctionsDirect.DirectFunctions.Select(credentialOptions, filename, selectClause, dictClause, sortClause, tableOptions,
+		return LinkarFunctionsDirect.DirectFunctions.GetTable(credentialOptions, filename, selectClause, dictClause, sortClause, tableOptions,
 			customVars, receiveTimeout)
 	}
 

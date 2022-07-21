@@ -22,6 +22,16 @@ Developers will find functions to synchronously and asynchronously execute opera
 
 Developers who want to create an application do not need to use all these libraries. They can just use the ones required for their purpose. The following section shows the hierarchy of the Linkar FRAMEWORK libraries that will help them select the  libraries needed in each case.
 
+The 15 libraries of Linkar Framework for nodejs were integrally written in nodejs. The nodejs base library Linkar, where are the "primitive" functions, is open source, but requires the Linkar Framework Private C Library (Linkar.dll for Windows or libLinkar.so for Linux) 
+
+The needed C libraries can be downloaded from: https://www.kosday.com/linkar-downloads. The C libraries downloaded, must be place inside the Linkar folder. The subfolder "DLL" is for Windows and subfolder "linux.so" for linux. Inside these subfolders there are other 2 subfolders for the different architecture (32 or 64 bits) of the libraries. Here is where the needed library must be place. You really only need a single library, depending on the operating system and architecture on which nodejs is going to run. 
+- Folder: Linkar
+	- DLL
+		- x64
+		- x86
+	- linux.so
+		- x32
+		- x64
 
 ## Linkar Framework hierarchy
 

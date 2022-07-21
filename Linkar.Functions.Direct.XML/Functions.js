@@ -53,7 +53,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Read(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectXML.Functions.Read(credentials, "LK.CUSTOMERS",
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" + 
 								"<LINKAR>" +
 								"  <RECORDS>" +
@@ -116,7 +116,7 @@ class Functions {
 			try{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Update(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectXML.Functions.Update(credentials, "LK.CUSTOMERS",
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
 								"<LINKAR>" +
 								"  <RECORDS>" +
@@ -181,7 +181,7 @@ class Functions {
 			try{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.UpdatePartial(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectXML.Functions.UpdatePartial(credentials, "LK.CUSTOMERS",
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
 								"<LINKAR>" +
 								"  <RECORDS>" +
@@ -241,7 +241,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.New(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectXML.Functions.New(credentials, "LK.CUSTOMERS",
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
 								"<LINKAR>" +
 								"  <RECORDS>" +
@@ -308,7 +308,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Delete(credentials, "LK.CUSTOMERS",
+				var result = LinkarFunctionsDirectXML.Functions.Delete(credentials, "LK.CUSTOMERS",
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
 								"<LINKAR>" +
 								"  <RECORDS>" +
@@ -373,7 +373,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Select(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectXML.Functions.Select(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -419,7 +419,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Subroutine(credentials, "SUB.DEMOLINKAR", 3,
+				var result = LinkarFunctionsDirectXML.Functions.Subroutine(credentials, "SUB.DEMOLINKAR", 3,
 								"<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
 								"<LINKAR>" +
 								"  <ARGUMENTS>" +
@@ -473,7 +473,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Conversion(credentials, CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
+				var result = LinkarFunctionsDirectXML.Functions.Conversion(credentials, CONVERSION_TYPE.INPUT,"31-12-2017þ01-01-2018","D2-");
 			}
 			catch (error)
 			{
@@ -518,7 +518,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Format(credentials, "1þ2","R#10");
+				var result = LinkarFunctionsDirectXML.Functions.Format(credentials, "1þ2","R#10");
 			}
 			catch (error)
 			{
@@ -562,7 +562,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Dictionaries(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectXML.Functions.Dictionaries(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -606,7 +606,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.Execute(credentials, "WHO");
+				var result = LinkarFunctionsDirectXML.Functions.Execute(credentials, "WHO");
 			}
 			catch (error)
 			{
@@ -669,7 +669,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.GetVersion(credentials);
+				var result = LinkarFunctionsDirectXML.Functions.GetVersion(credentials);
 			}
 			catch (error)
 			{
@@ -721,7 +721,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkSchemas(credentials);
+				var result = LinkarFunctionsDirectXML.Functions.LkSchemas(credentials);
 			}
 			catch (error)
 			{
@@ -774,7 +774,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 
-				var result = LinkarFunctionsDirectMV.Functions.LkProperties(credentials, "LK.CUSTOMERS");
+				var result = LinkarFunctionsDirectXML.Functions.LkProperties(credentials, "LK.CUSTOMERS");
 			}
 			catch (error)
 			{
@@ -816,7 +816,7 @@ class Functions {
 			{
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				
-				var result = LinkarFunctionsDirectMV.Functions.ResetCommonBlocks(credentials);
+				var result = LinkarFunctionsDirectXML.Functions.ResetCommonBlocks(credentials);
 			}
 			catch (error)
 			{

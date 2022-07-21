@@ -66,7 +66,7 @@ var RowHeaders = require('./ROWHEADERS_TYPE')
 			
 			In case of pagination indicates the number of records by page. It must be bigger than 0.
 
-		Property Pagination_NumPage
+		Property: Pagination_NumPage
 			number
 			
 			In case of pagination it indicates the page number to obtain. Must be greater than 0.

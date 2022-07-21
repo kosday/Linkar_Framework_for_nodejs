@@ -580,8 +580,9 @@ class LinkarClient {
 		customVars = "", receiveTimeout = 0) {
 		var opArgs = OperationArguments.OperationArguments.GetGetTableArgs(filename, selectClause, dictClause, sortClause, tableOptions, customVars);       
 		var opCode = OPERATION_CODE.OPERATION_CODE.GETTABLE;
-		var inputFormat = LinkarFunctions.DATAFORMATSCH_TYPE.TABLE;
-	
+		var inputFormat = LinkarFunctions.DATAFORMAT_TYPE.MV;
+		var outputFormat = LinkarFunctions.DATAFORMATSCH_TYPE.TABLE;
+
 		var result = linkar.LkExecutePersistentOperation(this.ConnectionInfo, opCode, opArgs, inputFormat, outputFormat, receiveTimeout);
 		return result;
 	}

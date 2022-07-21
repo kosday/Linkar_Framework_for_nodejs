@@ -272,7 +272,7 @@ class MvOperations
 			var cstr = DBMV_Mark.SM;/*String.valueOf(DBMV_Mark.SM);*/
 			for (var index = 0; index < subvalue; index++)
 				createdstr += cstr;
-			str = str.substring(0, i) + createdstr + str(i);
+			str = str.substring(0, i) + createdstr + str.substring(i);
 			i += subvalue;
 		}
 	

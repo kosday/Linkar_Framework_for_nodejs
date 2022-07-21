@@ -83,7 +83,7 @@ class UpdateOptions {
 	*/
 	GetString()
 	{
-		var str = (this._OptimisticLock ? "1" : "0") + DBMV_Mark.AM_str + this.ReadAfterCommonOptions.GetStringAM();
+		var str = (this.OptimisticLock ? "1" : "0") + DBMV_Mark.AM_str + this.ReadAfterCommonOptions.GetStringAM();
 		return str;
 	}
 }

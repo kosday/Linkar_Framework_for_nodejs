@@ -81,7 +81,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentTABLE.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 
@@ -135,7 +135,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentTABLE.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 
@@ -192,7 +192,7 @@ class LinkarClient {
 		{
 			try
 			{
-				var client = new LinkarFunctionsPersistentMV.LinkarClient();
+				var client = new LinkarFunctionsPersistentTABLE.LinkarClient();
 				var credentials = new Linkar.CredentialOptions("127.0.0.1", "EPNAME", 11300, "admin", "admin");
 				client.Login(credentials);
 
@@ -209,7 +209,7 @@ class LinkarClient {
 	*/
 	GetTable(filename, selectClause = "", dictClause = "", sortClause = "", tableOptions = new LinkarFunctions.TableOptions(),
 		customVars = "", receiveTimeout = 0) {
-		return this.linkarClient.Select(filename, selectClause, dictClause, sortClause, tableOptions,
+		return this.linkarClient.GetTable(filename, selectClause, dictClause, sortClause, tableOptions,
 			customVars, receiveTimeout)
 	}
 
