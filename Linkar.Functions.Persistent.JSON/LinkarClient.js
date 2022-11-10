@@ -73,7 +73,7 @@ class LinkarClient {
 			recordIds - (string) A list of item IDs to read.
 			dictionaries - (string) List of dictionaries to read, separated by space. If this list is not set, all fields are returned. You may use the format LKFLDx where x is the attribute number.
 			readOptions - (<ReadOptions>) Object that defines the different reading options of the Function: Calculated, dictClause, conversion, formatSpec, originalRecords.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -128,7 +128,7 @@ class LinkarClient {
 			filename - (string) Name of the file being updated.
 			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords.
 			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -194,7 +194,7 @@ class LinkarClient {
 			filename - (string) Name of the file being updated.
 			records - (string) Buffer of record data to update. Inside this string are the recordIds, the modified records, and the originalRecords.
 			updateOptions - (<UpdateOptions>) Object with write options, including optimisticLockControl, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -258,7 +258,7 @@ class LinkarClient {
 			filename - (string) The file name where the records are going to be created.
 			records - (string) Buffer of records to write. Inside this string are the recordIds, and the records.
 			newOptions - (<NewOptions>) Object with write options for the new record(s), including recordIdType, readAfter, calculated, dictionaries, conversion, formatSpec, originalRecords.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -321,7 +321,7 @@ class LinkarClient {
 			filename - (string) The file name where the records are going to be created.
 			records - (string) Buffer of records to be deleted.
 			deleteOptions - (<DeleteOptions>) Object with options to manage how records are deleted, including optimisticLockControl, recoverRecordIdType.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 
@@ -390,7 +390,7 @@ class LinkarClient {
 			dictClause - (string) Space-delimited list of dictionaries to read. If this list is not set, all fields are returned. For example CUSTOMER DATE ITEM. You may use the format LKFLDx where x is the attribute number.
 			preSelectClause - (string) An optional command that executes before the main Select
 			selectOptions - (<SelectOptions>) Object with options to manage how records are selected, including calculated, dictionaries, conversion, formatSpec, originalRecords, onlyItemId, pagination, regPage, numPage.
-			jsonFormat - (<JSON_FORMAT>) Different JSON output formats.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -713,6 +713,7 @@ class LinkarClient {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+				CONVERTNUMBOOLJSON - Switch to create numeric and boolean data in JSON strings. Default is false.
 
 		Example:
 		--- Code
@@ -803,6 +804,7 @@ class LinkarClient {
 		Arguments:
 			filename - (string) File name to LkProperties.
 			lkPropertiesOptions - (<LkPropertiesOptions>) This object defines the different options in base of the asked Schema Type: LKSCHEMAS, SQLMODE o DICTIONARIES.
+			jsonFormat - (<JSON_FORMAT>) Specifies the desired output format: standard JSON, JSON_DICT format, or JSON_SCH format.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -811,14 +813,6 @@ class LinkarClient {
 			
 			The results of the operation.
 		
-		Remarks:
-			TABLE output format uses the defined control characters in <EntryPoints Parameters: http://kosday.com/Manuals/en_web_linkar/lk_schemas_ep_parameters.html> Table Row Separator and Column Row Separator.
-			
-			By default:
-			
-				TAB - char (9) for columns.
-				VT - char (11) for rows.
-
 		Example:
 		--- Code
 		var Linkar = require('linkar_framework/Linkar/Linkar')
@@ -845,9 +839,9 @@ class LinkarClient {
 		---
 	*/
 	LkProperties(filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
-		customVars = "", receiveTimeout = 0) {
+		jsonFormat = JSON_FORMAT.JSON, customVars = "", receiveTimeout = 0) {
 		return this.linkarClient.LkProperties(filename, lkPropertiesOptions,
-			LinkarFunctions.DATAFORMAT_TYPE.JSON, customVars, receiveTimeout)
+			jsonFormat, customVars, receiveTimeout)
 	}
 	
 	/*

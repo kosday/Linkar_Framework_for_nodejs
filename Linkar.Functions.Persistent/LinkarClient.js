@@ -473,6 +473,7 @@ class LinkarClient {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+				CONVERTNUMBOOLJSON - Switch to create numeric and boolean data in JSON strings. Default is false.
 	*/
 	GetVersion(outputFormat = LinkarFunctions.DATAFORMAT_TYPE.MV, receiveTimeout = 0) {
 		var opArgs = OperationArguments.OperationArguments.GetVersionArgs();        
@@ -523,7 +524,7 @@ class LinkarClient {
 		Arguments:
 			filename - (string) File name to LkProperties.
 			lkPropertiesOptions - (<LkPropertiesOptions>) This object defines the different options in base of the asked Schema Type: LKSCHEMAS, SQLMODE o DICTIONARIES.
-			outputFormat - (<DATAFORMATSCH_TYPE>) Indicates in what format you want to receive the data resulting from the operation: MV, XML, JSON or TABLE.
+			outputFormat - (<DATAFORMATSCHPROP_TYPE>) Indicates in what format you want to receive the data resulting from the operation: MV, XML, XML_DICT, XML_SCH, JSON, JSON_DICT, JSON_SCH or TABLE.
 			customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -541,7 +542,7 @@ class LinkarClient {
 				VT - char (11) for rows.
 	*/
 	LkProperties(filename, lkPropertiesOptions = new LinkarFunctions.LkPropertiesOptions(),
-		outputFormat = LinkarFunctions.DATAFORMATSCH_TYPE.MV, customVars = "", receiveTimeout = 0) {
+		outputFormat = LinkarFunctions.DATAFORMATSCHPROP_TYPE.MV, customVars = "", receiveTimeout = 0) {
 		var opArgs = OperationArguments.OperationArguments.GetLkPropertiesArgs(filename, lkPropertiesOptions, customVars);  
 		var opCode = OPERATION_CODE.OPERATION_CODE.LKPROPERTIES;
 		var inputFormat = LinkarFunctions.DATAFORMAT_TYPE.MV;
